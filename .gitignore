@@ -1,0 +1,7 @@
+*.retry
+*/__pycache__
+*.pyc
+.cache
+
+ansible.cfg
+inventory

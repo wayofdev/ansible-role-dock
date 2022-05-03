@@ -1,0 +1,20 @@
+---
+
+- include_tasks: dockutil-install.yml
+  tags:
+    - dockutil-install
+
+- include_tasks: dock-persist.yml
+  tags:
+    - dock-manipulate
+    - dock-persist
+
+- include_tasks: dock-position.yml
+  tags:
+    - dock-manipulate
+    - dock-position
+
+- include_tasks: dock-remove.yml
+  tags:
+    - dock-manipulate
+    - dock-remove

@@ -1,0 +1,24 @@
+---
+
+galaxy_info:
+  role_name: dock
+  author: lotyp
+  description: Role is used to automate use of "dockutil" – command line tool for managing dock items. You can add, remove and re-arrange Dock items.
+  company: wayofdev
+
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: macOS
+      versions:
+        - "Big-Sur"
+
+  galaxy_tags:
+    - 'dock'
+    - 'dockutil'
+    - 'mac'
+    - 'osx'
+
+dependencies: []
