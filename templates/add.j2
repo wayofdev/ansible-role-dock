@@ -1,0 +1,4 @@
+{{ dockutil_path }}
+{% for item in dockitems_to_add.results|flatten(levels=1) %}
+ --add '{{ item.item.path }}' --position {{ item.item.pos }}
+{% endfor %}

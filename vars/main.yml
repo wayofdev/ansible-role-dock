@@ -1,2 +1,3 @@
 ---
-# vars file for ansible-role-dock
+
+dockutil_path: dockutil

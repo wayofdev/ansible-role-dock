@@ -2,6 +2,14 @@
 
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing dock items. You can add, remove and re-arrange Dock items.
 
+### Why to use this role?
+
+* This version supports latest 3.x 'dockutil
+* Items are added, positioned and removed in single command run instead of loops
+* Latest MacOS Monterey support
+* Can purge all items contained in Dock with one setting
+
+
 ## Requirements
 
   - **Homebrew**: Requires `homebrew` already installed (you can use `geerlingguy.mac.homebrew` to install it on your Mac).
@@ -9,6 +17,13 @@ Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil
 ## Role Variables
 
 Available variables are listed below, along with example values (see `defaults/main.yml`):
+
+```yaml
+dockutil:
+  remove_all: false
+```
+
+Removes all contents from dock, if set to false, then only items specified in `remove` will be removed.
 
 ```yaml
 dockutil:
@@ -24,6 +39,7 @@ dockutil:
 
 Dock items to add. `pos` parameter is optional and will place the Dock item in a particular position in the Dock.
 
+
 ## Dependencies
 
   - (Soft dependency) `geerlingguy.homebrew`
@@ -31,28 +47,30 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
 ## Example Playbook
 
 ```yaml
-    - hosts: localhost
+---
+- hosts: localhost
 
-      vars:
-        dockutil:
-          remove:
-            - Launchpad
-            - TV
-            - Podcasts
-            - 'App Store'
-          persist:
-            - name: Messages
-              path: "/Applications/Messages.app/"
-            - name: Safari
-              path: "/Applications/Safari.app/"
-              pos: 2
-            - name: Sublime Text
-              path: "/Applications/Sublime Text.app/"
-              pos: 3
+  vars:
+    dockutil:
+      remove_all: false
+      remove:
+        - Launchpad
+        - TV
+        - Podcasts
+        - 'App Store'
+      persist:
+        - name: Messages
+          path: "/Applications/Messages.app/"
+        - name: Safari
+          path: "/Applications/Safari.app/"
+          pos: 2
+        - name: Sublime Text
+          path: "/Applications/Sublime Text.app/"
+          pos: 3
 
-      roles:
-        - geerlingguy.mac.homebrew
-        - lotyp.dock
+  roles:
+    - geerlingguy.mac.homebrew
+    - lotyp.dock
 ```
 
 See the [Mac Provisioner Playbook](https://github.com/wayofdev/playbook-mac-provisioner) for an example of this role's usage.
