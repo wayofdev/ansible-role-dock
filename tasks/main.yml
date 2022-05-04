@@ -1,20 +1,29 @@
 ---
 
-- include_tasks: install.yml
-  tags:
-    - dockutil-install
+#- include_tasks: install.yml
+#  tags:
+#    - dockutil-install
 
 - include_tasks: remove.yml
   tags:
     - dock-manipulate
     - dock-remove
 
-- include_tasks: add.yml
-  tags:
-    - dock-manipulate
-    - dock-add
-
-- include_tasks: position.yml
-  tags:
-    - dock-manipulate
-    - dock-position
+#- include_tasks: add.yml
+#  loop: "{{ dockutil.persist|flatten(levels=1) }}"
+#  loop_control:
+#    label: "{{ item.item }}"
+#  tags:
+#    - dock-manipulate
+#    - dock-add
+#
+#- include_tasks: position.yml
+#  loop: "{{ dockutil.persist|flatten(levels=1) }}"
+#  loop_control:
+#    label: "{{ item.item }}"
+#  when:
+#    - item.pos is defined
+#    - item.pos > 0
+#  tags:
+#    - dock-manipulate
+#    - dock-position
