@@ -2,6 +2,12 @@
 ### Variables
 ###
 
+ANSIBLE_FORCE_COLOR = 1
+
+# https://serverfault.com/questions/1031491/display-ansible-playbook-output-properly-formatted
+ANSIBLE_STDOUT_CALLBACK = yaml
+
+
 ### Playbook name
 playbook ?= main.yml
 inventory ?= inventory.yml
