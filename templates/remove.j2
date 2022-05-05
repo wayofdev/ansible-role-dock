@@ -1,1 +1,4 @@
-{{ dockutil_path }}{% for item in dockitems_current.results|flatten(levels=1) %} --remove '{{ item.item }}'{% endfor %}
+{{ dockutil_path }}
+{% for item in dockitems_current.results|flatten(levels=1) %}
+ --remove '{{ item.item }}'
+{% endfor %}

@@ -8,6 +8,7 @@ Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil
 * Items are added, positioned and removed in single command run instead of loops
 * Latest MacOS Monterey support
 * Can purge all items contained in Dock with one setting
+* No need for ansible handlers and sudo rights to do killall and restart Dock, as it is handled by `dockutil` by itself!
 
 
 ## Requirements
@@ -34,7 +35,7 @@ Dock items to remove.
 
 ```yaml
 dockutil:
-  persist: []
+  add: []
 ```
 
 Dock items to add. `pos` parameter is optional and will place the Dock item in a particular position in the Dock.
@@ -58,15 +59,15 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
         - TV
         - Podcasts
         - 'App Store'
-      persist:
+      add:
         - name: Messages
           path: "/Applications/Messages.app/"
         - name: Safari
           path: "/Applications/Safari.app/"
-          pos: 2
+          position: 2
         - name: Sublime Text
           path: "/Applications/Sublime Text.app/"
-          pos: 3
+          position: 3
 
   roles:
     - geerlingguy.mac.homebrew

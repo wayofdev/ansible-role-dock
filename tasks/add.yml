@@ -3,21 +3,26 @@
 - name: Dockutil | Get information on items to add
   ansible.builtin.shell: "{{ dockutil_path }} -f '{{ item.name }}'"
   register: dockitems_to_add
-  loop: "{{ dockutil.persist|flatten(levels=1) }}"
+  loop: "{{ dockutil.add|flatten(levels=1) }}"
   changed_when: false
   failed_when: >
     "No such file or directory" in dockitems_to_add.stdout
     or "command not found" in dockitems_to_add.stdout
-  check_mode: false
+  tags:
+    - dock-add
 
 - name: Dockutil | Debug "add" statement
   ansible.builtin.debug:
     msg: "{{ lookup('template', './templates/add.j2') | replace('\n', '') | trim }}"
   loop_control:
     label: "{{ item.item }}"
+  tags:
+    - dock-add
 
 - name: Dockutil | Adding items
   ansible.builtin.shell: "{{ lookup('template', './templates/add.j2') | replace('\n', '') | trim }}"
   loop_control:
     label: "{{ item.item }}"
   changed_when: false
+  tags:
+    - dock-add

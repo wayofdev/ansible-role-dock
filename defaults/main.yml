@@ -16,10 +16,10 @@ dockutil:
 
   # Dock items to add. `pos` parameter is optional and will place the Dock item
   # in a particular position in the Dock.
-  persist:
-    - name: "Sublime Text"
-      path: "/System/Applications/Launchpad.app"
-      pos: 5
-    - name: "Sublime Text"
-      path: "/Applications/Sublime Text.app"
-      pos: 6
+  add:
+    - name: "Mail"
+      path: "/System/Applications/Mail.app"
+      position: 5
+    - name: "Maps"
+      path: "/System/Applications/Maps.app"
+      position: 6

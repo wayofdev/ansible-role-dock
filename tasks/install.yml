@@ -5,18 +5,28 @@
   register: dockutil_version_output
   ignore_errors: true
   changed_when: false
+  tags:
+    - dock-install
 
 - name: Dockutil | Should we install
   ansible.builtin.set_fact:
     dockutil_install: "{{ dockutil_version_output.rc > 0 }}"
+  tags:
+    - dock-install
 
 - name: Dockutil | Debug task
   ansible.builtin.debug:
     msg: "Existing dockutil binary in system: {{ dockutil_install | ternary(false,true) }}"
+  tags:
+    - dock-install
 
 - name: Dockutil | Install for macOS using brew
   community.general.homebrew:
     name: "{{ dockutil.tap }}"
     state: present
     update_homebrew: true
+  notify:
+    - Clear homebrew cache
   when: dockutil_install
+  tags:
+    - dock-install

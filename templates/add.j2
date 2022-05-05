@@ -1,4 +1,5 @@
 {{ dockutil_path }}
 {% for item in dockitems_to_add.results|flatten(levels=1) %}
- --add '{{ item.item.path }}' --position {{ item.item.pos }}
+ --add '{{ item.item.path }}'
+ {% if item.item.position is defined and item.item.position > 0 %}--position {{ item.item.position }}{% endif %}
 {% endfor %}

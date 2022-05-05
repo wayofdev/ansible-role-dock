@@ -2,6 +2,13 @@
 ### Variables
 ###
 
+ANSIBLE_FORCE_COLOR = 1
+
+# https://serverfault.com/questions/1031491/display-ansible-playbook-output-properly-formatted
+# https://stackoverflow.com/questions/50009505/ansible-stdout-formatting
+ANSIBLE_STDOUT_CALLBACK = unixy
+
+
 ### Playbook name
 playbook ?= main.yml
 inventory ?= inventory.yml
@@ -15,7 +22,23 @@ lint:
 
 ### Run tests
 test:
-	ansible-playbook tests/test.yml
+	cd tests && ansible-playbook test.yml
+.PHONY: test
+
+test-install:
+	cd tests && ansible-playbook test.yml --tags dock-install
+.PHONY: test
+
+test-add:
+	cd tests && ansible-playbook test.yml --tags dock-add
+.PHONY: test
+
+test-remove:
+	cd tests && ansible-playbook test.yml --tags dock-remove
+.PHONY: test
+
+test-position:
+	cd tests && ansible-playbook test.yml --tags dock-position
 .PHONY: test
 
 ### List all hostnames
