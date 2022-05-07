@@ -7,19 +7,35 @@ dockutil:
   # Path to custom or official tap of dockutil
   tap: lotyp/formulae/dockutil
 
-  # Removes all contents from dock, if set to false, then only items specified in `remove` will be removed
-  remove_all: false
+  # Removes all contents from dock including "others" section with Downloads folder.
+  # Prefer this option on new installations together with configured "dockitems".
+  erase_all: false
 
-  # Dock items to remove.
-  remove:
-    - Launchpad
+  dockitems:
+    - name: Mail
+      # action: adddddd
+      action: add
+      path: /System/Applications/Mail.app
 
-  # Dock items to add. `pos` parameter is optional and will place the Dock item
-  # in a particular position in the Dock.
-  persist:
-    - name: "Sublime Text"
-      path: "/System/Applications/Launchpad.app"
-      pos: 5
-    - name: "Sublime Text"
-      path: "/Applications/Sublime Text.app"
-      pos: 6
+    - name: Mail
+      action: add
+      path: /System/Applications/Mail.app
+
+    - name: Mail
+      action: add
+      path: /System/Applications/Mail.app
+      # position: dasdasdasdas
+
+    - name: Mail
+      action: add
+      path: /System/Applications/Mail.app
+      position: 0
+
+    - name: Mail
+      action: add
+      path: /System/Applications/Mail.app
+      position: end
+
+    - name: Mail
+      action: add
+      path: /System/Applications/Mail.app

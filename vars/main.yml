@@ -1,3 +1,48 @@
 ---
 
 dockutil_path: dockutil
+
+items_to_validate:
+  - action
+  - display
+  - sort
+  - section
+  - view
+  - type
+
+validation_lists:
+  action:
+    - add
+    - remove
+    - move
+
+  display:
+    - folder
+    - stack
+
+  sort:
+    - name
+    - dateadded
+    - datemodified
+    - datecreated
+    - kind
+
+  section:
+    - apps
+    - others
+
+  view:
+    - grid
+    - fan
+    - list
+    - auto
+
+  type:
+    - spacer
+    - small-spacer
+    - flex-spacer
+
+  position:
+    - beginning
+    - middle
+    - end

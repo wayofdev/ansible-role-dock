@@ -1,0 +1,13 @@
+---
+
+- name: Dockutil - Validation | Make sure that dockitems array contains valid "{{ item_to_validate }}" items
+  ansible.builtin.fail:
+    msg: >-
+      "{{ item_to_validate }}" can only be one of: "{{ validation_lists[item_to_validate] | join(', ') }}"
+  loop: "{{ dockutil.dockitems | flatten(levels=1) }}"
+  when:
+    - item[item_to_validate] is defined and not item[item_to_validate] in validation_lists[item_to_validate]
+  run_once: true
+  tags:
+    - dock-manipulate
+    - dock-validate

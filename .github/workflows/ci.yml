@@ -71,6 +71,7 @@ jobs:
         run: ansible-playbook tests/test.yml --ask-become
         env:
           ANSIBLE_FORCE_COLOR: '1'
+          ANSIBLE_STDOUT_CALLBACK: 'unixy'
 
       - name: Idempotence check.
         run: |
@@ -82,6 +83,7 @@ jobs:
             || (echo 'Idempotence test: fail' && exit 1)
         env:
           ANSIBLE_FORCE_COLOR: '1'
+          ANSIBLE_STDOUT_CALLBACK: 'unixy'
 
   publish:
     if: github.event.inputs.shouldPublishImage == 'yes' || github.ref == 'refs/heads/master'

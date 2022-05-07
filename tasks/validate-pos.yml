@@ -1,0 +1,14 @@
+---
+
+- name: Dockutil - Validation | Make sure that dockitems array contains valid "position" items
+  ansible.builtin.fail:
+    msg: >-
+      "position" can only be one of: "{{ validation_lists.position | join(', ') }}" or [+/-]index_number (int)
+  loop: "{{ dockutil.dockitems }}"
+  when:
+    - item.position is defined
+    - not item.position | regex_search('([0-9]+|beginning|middle|end)')
+  run_once: true
+  tags:
+    - dock-manipulate
+    - dock-validate
