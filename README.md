@@ -1,10 +1,9 @@
-# 
+<br>
 
 <div align="center">
 <img width="456" height="60" src="./assets/logo.gh-light-mode-only.png#gh-light-mode-only">
 <img width="456" height="60" src="./assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
 </div>
-
 <br>
 
 <div align="center">
@@ -16,20 +15,9 @@
 <img alt="Ansible Role" src="https://img.shields.io/ansible/role/d/59069?style=flat-square"/></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"/></a>
 </div>
-
 <br>
 
 # Ansible Role: macOS Dock Automation
-
-
-
-<div align="center">
-<img width="456" height="60" src="./assets/logo.gh-light-mode-only.png#gh-light-mode-only">
-<img width="456" height="60" src="./assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
-</div>
-
-
-
 
 
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing dock items. You can add, remove and re-arrange Dock items.
