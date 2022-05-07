@@ -1,19 +1,29 @@
-# Ansible Role: macOS Dock Automation
-
-
+# 
 
 <div align="center">
 <img width="456" height="60" src="./assets/logo.gh-light-mode-only.png#gh-light-mode-only">
 <img width="456" height="60" src="./assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
 </div>
 
+<br>
 
+<div align="center">
+<a href="https://actions-badge.atrox.dev/wayofdev/ansible-role-dock/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Fansible-role-dock%2Fbadge&style=flat-square"/></a>
+<a href="https://github.com/wayofdev/ansible-role-dock/releases"><img src="https://img.shields.io/github/release/wayofdev/ansible-role-dock.svg?style=flat-square" alt="Latest Version"></a>
+<a href="https://galaxy.ansible.com/lotyp/dock">
+<img alt="Ansible Quality Score" src="https://img.shields.io/ansible/quality/59069?style=flat-square"/></a>
+<a href="https://galaxy.ansible.com/lotyp/dock">
+<img alt="Ansible Role" src="https://img.shields.io/ansible/role/d/59069?style=flat-square"/></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"/></a>
+</div>
 
+<br>
 
+# Ansible Role: macOS Dock Automation
 
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing dock items. You can add, remove and re-arrange Dock items.
 
-#### Why to use this role?
+#### Benefits of this role:
 
 * This version supports latest 3.x [dockutil](https://github.com/kcrawford/dockutil)
 * Items are added, positioned and removed in single command run instead of loops
@@ -98,12 +108,12 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
 
 ## License
 
-MIT
+[![Licence](https://img.shields.io/github/license/wayofdev/ansible-role-dock?style=for-the-badge)](./LICENSE)
 
 
 
 ## Author Information
 
-This role was created in 2022 by [lotyp / wayofdev](https://github.com/wayofdev).
+This role was created in **2022** by [lotyp / wayofdev](https://github.com/wayofdev).
 
 Inspired by original role created by [@geerlingguy](https://github.com/geerlingguy) as a part of [ansible-collection-mac](https://github.com/geerlingguy/ansible-collection-mac).
