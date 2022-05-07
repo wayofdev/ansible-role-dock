@@ -25,6 +25,8 @@
     name: "{{ dockutil.tap }}"
     state: present
     update_homebrew: true
+  notify:
+    - Clear homebrew cache
   when: dockutil_install
   tags:
     - dock-install

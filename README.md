@@ -21,6 +21,17 @@
 
 # Ansible Role: macOS Dock Automation
 
+
+
+<div align="center">
+<img width="456" height="60" src="./assets/logo.gh-light-mode-only.png#gh-light-mode-only">
+<img width="456" height="60" src="./assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
+</div>
+
+
+
+
+
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing dock items. You can add, remove and re-arrange Dock items.
 
 #### Benefits of this role:
@@ -109,6 +120,8 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
 ## License
 
 [![Licence](https://img.shields.io/github/license/wayofdev/ansible-role-dock?style=for-the-badge)](./LICENSE)
+
+
 
 
 
