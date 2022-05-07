@@ -6,6 +6,8 @@
 </div>
 <br>
 
+<br>
+
 <div align="center">
 <a href="https://actions-badge.atrox.dev/wayofdev/ansible-role-dock/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Fansible-role-dock%2Fbadge&style=flat-square"/></a>
 <a href="https://github.com/wayofdev/ansible-role-dock/releases"><img src="https://img.shields.io/github/release/wayofdev/ansible-role-dock.svg?style=flat-square" alt="Latest Version"></a>
@@ -108,8 +110,6 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
 ## License
 
 [![Licence](https://img.shields.io/github/license/wayofdev/ansible-role-dock?style=for-the-badge)](./LICENSE)
-
-
 
 
 
