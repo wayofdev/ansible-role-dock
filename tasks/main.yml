@@ -1,10 +1,23 @@
 ---
 
+- include_tasks: validate-all.yml
+  loop: "{{ items_to_validate | flatten(levels=1) }}"
+  loop_control:
+    loop_var: item_to_validate
+  tags:
+    - dock-manipulate
+    - dock-validate
+
+- include_tasks: validate-pos.yml
+  tags:
+    - dock-manipulate
+    - dock-validate
+
 - include_tasks: install.yml
   tags:
     - dockutil-install
 
-- include_tasks: remove.yml
+- include_tasks: remove-all.yml
   tags:
     - dock-manipulate
     - dock-remove
@@ -13,8 +26,3 @@
   tags:
     - dock-manipulate
     - dock-add
-
-- include_tasks: position.yml
-  tags:
-    - dock-manipulate
-    - dock-position

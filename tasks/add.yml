@@ -3,7 +3,7 @@
 - name: Dockutil | Get information on items to add
   ansible.builtin.shell: "{{ dockutil_path }} -f '{{ item.name }}'"
   register: dockitems_to_add
-  loop: "{{ dockutil.add|flatten(levels=1) }}"
+  loop: "{{ dockutil.dockitems | selectattr('action', 'equalto', 'add') | flatten(levels=1) }}"
   changed_when: false
   failed_when: >
     "No such file or directory" in dockitems_to_add.stdout
@@ -11,11 +11,19 @@
   tags:
     - dock-add
 
+## FILTER AND ; Loop and include only not found items !!!!
+
+- name: Dockutil | Debug "add" statement 2
+  ansible.builtin.debug:
+    msg: "{{ dockitems_to_add.results }}"
+  tags:
+    - dock-add
+
 - name: Dockutil | Debug "add" statement
   ansible.builtin.debug:
     msg: "{{ lookup('template', './templates/add.j2') | replace('\n', '') | trim }}"
   loop_control:
-    label: "{{ item.item }}"
+    label: "{{ item }}"
   tags:
     - dock-add
 

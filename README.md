@@ -1,19 +1,36 @@
 # Ansible Role: macOS Dock Automation
 
+
+
+<div align="center">
+<img width="456" height="60" src="./assets/logo.gh-light-mode-only.png#gh-light-mode-only">
+<img width="456" height="60" src="./assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
+</div>
+
+
+
+
+
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing dock items. You can add, remove and re-arrange Dock items.
 
-### Why to use this role?
+#### Why to use this role?
 
-* This version supports latest 3.x 'dockutil
+* This version supports latest 3.x [dockutil](https://github.com/kcrawford/dockutil)
 * Items are added, positioned and removed in single command run instead of loops
 * Latest MacOS Monterey support
-* Can purge all items contained in Dock with one setting
-* No need for ansible handlers and sudo rights to do killall and restart Dock, as it is handled by `dockutil` by itself!
+* Can erase all items contained in Dock with one setting
+* No need for ansible handlers and sudo rights to do `killall` to restart Dock, as it is handled by `dockutil` by itself!
+* Supports all `dockutil` options, like:
+`--add, --remove, --move, --replacing, --position, --after, --before, --section, --allhomes, --sort, --display, --view`
+
 
 
 ## Requirements
 
   - **Homebrew**: Requires `homebrew` already installed (you can use `geerlingguy.mac.homebrew` to install it on your Mac).
+  - **ansible.community.general** – installation handled by `Makefile`
+
+
 
 ## Role Variables
 
@@ -21,7 +38,7 @@ Available variables are listed below, along with example values (see `defaults/m
 
 ```yaml
 dockutil:
-  remove_all: false
+  erase_all: false
 ```
 
 Removes all contents from dock, if set to false, then only items specified in `remove` will be removed.
@@ -41,9 +58,12 @@ dockutil:
 Dock items to add. `pos` parameter is optional and will place the Dock item in a particular position in the Dock.
 
 
+
 ## Dependencies
 
   - (Soft dependency) `geerlingguy.homebrew`
+
+
 
 ## Example Playbook
 
@@ -53,19 +73,19 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
 
   vars:
     dockutil:
-      remove_all: false
-      remove:
-        - Launchpad
-        - TV
-        - Podcasts
-        - 'App Store'
-      add:
+      erase_all: true
+
+      dockitems:
         - name: Messages
-          path: "/Applications/Messages.app/"
-        - name: Safari
-          path: "/Applications/Safari.app/"
-          position: 2
+          action: add
+          path: /System/Applications/Messages.app/
+
+        - name: Messages
+          action: add
+          path: /Applications/Safari.app/
+
         - name: Sublime Text
+          action: add
           path: "/Applications/Sublime Text.app/"
           position: 3
 
@@ -74,14 +94,16 @@ Dock items to add. `pos` parameter is optional and will place the Dock item in a
     - lotyp.dock
 ```
 
-See the [Mac Provisioner Playbook](https://github.com/wayofdev/playbook-mac-provisioner) for an example of this role's usage.
+
 
 ## License
 
 MIT
 
+
+
 ## Author Information
 
 This role was created in 2022 by [lotyp / wayofdev](https://github.com/wayofdev).
 
-The original role created by [@geerlingguy](https://github.com/geerlingguy) as a part of [ansible-collection-mac](https://github.com/geerlingguy/ansible-collection-mac).
+Inspired by original role created by [@geerlingguy](https://github.com/geerlingguy) as a part of [ansible-collection-mac](https://github.com/geerlingguy/ansible-collection-mac).

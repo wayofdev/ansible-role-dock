@@ -1,5 +1,10 @@
 {{ dockutil_path }}
 {% for item in dockitems_to_add.results|flatten(levels=1) %}
- --add '{{ item.item.path }}'
+ --{{ item.item.action }} '{{ item.item.path }}'
  {% if item.item.position is defined and item.item.position > 0 %}--position {{ item.item.position }}{% endif %}
+ {% if item.item.replacing is defined and item.item.replacing|length %}--replacing {{ item.item.replacing }}{% endif %}
+ {% if item.item.allhomes is defined and item.item.allhomes %}--allhomes{% endif %}
+ {% if item.item.view is defined %}--view {{ item.item.view }}{% endif %}
+ {% if item.item.display is defined %}--display {{ item.item.display }}{% endif %}
+ {% if item.item.label is defined %}--label {{ item.item.label }}{% endif %}
 {% endfor %}

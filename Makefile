@@ -25,6 +25,10 @@ test:
 	cd tests && ansible-playbook test.yml
 .PHONY: test
 
+test-validate:
+	cd tests && ansible-playbook test.yml --tags dock-validate
+.PHONY: test
+
 test-install:
 	cd tests && ansible-playbook test.yml --tags dock-install
 .PHONY: test
@@ -37,8 +41,8 @@ test-remove:
 	cd tests && ansible-playbook test.yml --tags dock-remove
 .PHONY: test
 
-test-position:
-	cd tests && ansible-playbook test.yml --tags dock-position
+test-move:
+	cd tests && ansible-playbook test.yml --tags dock-move
 .PHONY: test
 
 ### List all hostnames
