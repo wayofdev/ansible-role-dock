@@ -11,31 +11,4 @@ dockutil:
   # Prefer this option on new installations together with configured "dockitems".
   erase_all: false
 
-  dockitems:
-    - name: Mail
-      # action: adddddd
-      action: add
-      path: /System/Applications/Mail.app
-
-    - name: Mail
-      action: add
-      path: /System/Applications/Mail.app
-
-    - name: Mail
-      action: add
-      path: /System/Applications/Mail.app
-      # position: dasdasdasdas
-
-    - name: Mail
-      action: add
-      path: /System/Applications/Mail.app
-      position: 0
-
-    - name: Mail
-      action: add
-      path: /System/Applications/Mail.app
-      position: end
-
-    - name: Mail
-      action: add
-      path: /System/Applications/Mail.app
+  dockitems: []

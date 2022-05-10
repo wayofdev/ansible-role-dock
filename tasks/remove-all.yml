@@ -3,7 +3,7 @@
 - name: Dockutil | Remove all dock items
   ansible.builtin.shell: "{{ dockutil_path }} --remove all"
   register: removed_items_task
-  when: not dockutil.erase_all|bool
+  when: dockutil.erase_all|bool
   tags:
     - dock-manipulate
     - dock-remove

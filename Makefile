@@ -25,6 +25,14 @@ test:
 	cd tests && ansible-playbook test.yml
 .PHONY: test
 
+test-manipulate:
+	cd tests && ansible-playbook test.yml --tags dock-manipulate
+.PHONY: test
+
+test-map:
+	cd tests && ansible-playbook test.yml --tags dock-map
+.PHONY: test
+
 test-validate:
 	cd tests && ansible-playbook test.yml --tags dock-validate
 .PHONY: test
@@ -34,7 +42,7 @@ test-install:
 .PHONY: test
 
 test-add:
-	cd tests && ansible-playbook test.yml --tags dock-add
+	cd tests && ansible-playbook test.yml --tags dock-map
 .PHONY: test
 
 test-remove:
