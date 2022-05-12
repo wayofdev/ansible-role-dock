@@ -1,0 +1,6 @@
+{{ dockutil_path }}
+{% for item in dockitems_to_move.results|flatten(levels=1) %}
+ --{{ item.item.action }} {% if item.item.label is defined %}'{{ item.item.label }}'{% elif item.item.path is defined %}'{{ item.item.path }}'{% endif %}
+ {% if item.item.position is defined %}--position {{ item.item.position }}{% endif %}
+ {% if item.item.allhomes is defined and item.item.allhomes %}--allhomes{% endif %}
+{% endfor %}

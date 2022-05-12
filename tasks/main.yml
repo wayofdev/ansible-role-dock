@@ -8,29 +8,38 @@
   tags:
     - dock-manipulate
     - dock-validate
-    - dock-map
+    - dock-add
+    - dock-remove
+    - dock-move
 
-- name: Dockutil | Include | Position validation tasks
+- name: Dockutil | Include | Other validation tasks
   ansible.builtin.include_tasks: validate-pos.yml
   tags:
     - dock-manipulate
     - dock-validate
-    - dock-map
+    - dock-add
+    - dock-remove
+    - dock-move
 
 - name: Dockutil | Include | Install dockutil
   ansible.builtin.include_tasks: install.yml
   tags:
     - dockutil-install
 
-- name: Dockutil | Include | Remove all items
-  ansible.builtin.include_tasks: remove-all.yml
-  when: dockutil.erase_all|bool
+- name: Dockutil | Include | Remove items
+  ansible.builtin.include_tasks: remove.yml
   tags:
     - dock-manipulate
     - dock-remove
 
-- name: Dockutil | Include | Add - remove - move - replace items
-  ansible.builtin.include_tasks: map.yml
+- name: Dockutil | Include | Add items
+  ansible.builtin.include_tasks: add.yml
   tags:
     - dock-manipulate
-    - dock-map
+    - dock-add
+
+- name: Dockutil | Include | Move items
+  ansible.builtin.include_tasks: move.yml
+  tags:
+    - dock-manipulate
+    - dock-move

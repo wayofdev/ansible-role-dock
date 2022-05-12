@@ -68,7 +68,7 @@ jobs:
           ansible-galaxy install -r requirements.yml
 
       - name: Test the playbook.
-        run: ansible-playbook tests/test.yml --ask-become
+        run: ansible-playbook tests/test.yml
         env:
           ANSIBLE_FORCE_COLOR: '1'
           ANSIBLE_STDOUT_CALLBACK: 'unixy'

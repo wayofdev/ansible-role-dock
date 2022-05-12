@@ -10,57 +10,54 @@ ANSIBLE_STDOUT_CALLBACK = unixy
 
 
 ### Playbook name
-playbook ?= main.yml
+playbook ?= test.yml
+workdir ?= ./tests
 inventory ?= inventory.yml
 reqs ?= requirements.yml
 
 ### Lint yaml files
 lint:
-	cd tests && ansible-lint test.yml -c ../.ansible-lint
-	cd tests && ansible-playbook test.yml --syntax-check
+	cd $(workdir) && ansible-lint $(playbook) -c ../.ansible-lint
+	cd $(workdir) && ansible-playbook $(playbook) --syntax-check
 .PHONY: lint
 
 ### Run tests
 test:
-	cd tests && ansible-playbook test.yml
-.PHONY: test
-
-test-manipulate:
-	cd tests && ansible-playbook test.yml --tags dock-manipulate
-.PHONY: test
-
-test-map:
-	cd tests && ansible-playbook test.yml --tags dock-map
+	cd $(workdir) && ansible-playbook $(playbook)
 .PHONY: test
 
 test-validate:
-	cd tests && ansible-playbook test.yml --tags dock-validate
+	cd $(workdir) && ansible-playbook $(playbook) --tags dock-validate
 .PHONY: test
 
 test-install:
-	cd tests && ansible-playbook test.yml --tags dock-install
+	cd $(workdir) && ansible-playbook $(playbook) --tags dock-install
+.PHONY: test
+
+test-manipulate:
+	cd $(workdir) && ansible-playbook $(playbook) --tags dock-manipulate
 .PHONY: test
 
 test-add:
-	cd tests && ansible-playbook test.yml --tags dock-map
+	cd $(workdir) && ansible-playbook $(playbook) --tags dock-add
 .PHONY: test
 
 test-remove:
-	cd tests && ansible-playbook test.yml --tags dock-remove
+	cd $(workdir) && ansible-playbook $(playbook) --tags dock-remove
 .PHONY: test
 
 test-move:
-	cd tests && ansible-playbook test.yml --tags dock-move
+	cd $(workdir) && ansible-playbook $(playbook) --tags dock-move
 .PHONY: test
 
 ### List all hostnames
 ls-host:
-	ansible all -i $(inventory) -m shell -a "hostname;"
+	cd $(workdir) && ansible all -i $(inventory) -m shell -a "hostname;"
 .PHONY: ls-host
 
 ### Check playbook syntax
 check-syntax:
-	ansible-playbook $(playbook) -i $(inventory) --syntax-check
+	cd $(workdir) && ansible-playbook $(playbook) -i $(inventory) --syntax-check
 .PHONY: check-syntax
 
 ### Install ansible dependencies

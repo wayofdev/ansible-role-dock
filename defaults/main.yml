@@ -9,6 +9,36 @@ dockutil:
 
   # Removes all contents from dock including "others" section with Downloads folder.
   # Prefer this option on new installations together with configured "dockitems".
-  erase_all: false
+  erase_all: true
 
   dockitems: []
+#    - label: System Preferences
+#      action: add
+#      path: /System/Applications/System Preferences.app
+
+#    - label: TextEdit
+#      action: add
+#      path: /System/Applications/TextEdit.app
+#
+#    - label: Messages
+#      action: add
+#      path: /System/Applications/Messages.app
+##
+#    - label: com.apple.mail
+#      action: add
+#      path: /System/Applications/Mail.app
+#      before: Messages
+#
+#    - label: Voice Memos
+#      action: add
+#      path: /System/Applications/Voice Memos.app
+#
+#    - label: TextEdit
+#      action: add
+#      path: /System/Applications/Reminders.app
+#      after: TextEdit
+
+# List of Default Monterey apps:
+# Launchpad
+# Safari
+# Messages

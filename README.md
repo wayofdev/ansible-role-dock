@@ -35,14 +35,14 @@ Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil
 * Supports all `dockutil` options, like:
 `--add, --remove, --move, --replacing, --position, --after, --before, --section, --allhomes, --sort, --display, --view`
 
-
+<br>
 
 ## 📑 Requirements
 
   - **Homebrew**: Requires `homebrew` already installed (you can use `geerlingguy.mac.homebrew` to install it on your Mac).
   - **ansible.community.general** – installation handled by `Makefile`
 
-
+<br>
 
 ## 🔧 Role Variables
 
@@ -55,31 +55,31 @@ Structure of dictionary item for **adding** apps. All available options are list
 ```yaml
 dockutil:
   # Should we try to install dockutil?
-  install: "<true | false>" # (default: true) Install dockutil using homebrew.
+  install: <true | false> # (default: true) Install dockutil using homebrew.
 
   # Path to custom or official tap of dockutil
   tap: lotyp/formulae/dockutil # By default 3.x tap is used
 
   # Removes all contents from dock including "others" section with Downloads folder.
   # Prefer this option on new installations together with configured "dockitems".
-  erase_all: "<true | false>" # Whether to attempt to erase all items in Dock including Downloads folder! (default: false)
+  erase_all: <true | false> # Whether to attempt to erase all items in Dock including Downloads folder! (default: false)
 
   dockitems:
-    - label: "<label | app bundle id | path | url>" # Used in search for existing items or names new apps"
-      action: "<add | remove | move>"
-      path: "/System/Applications/TextEdit.app"
-      replacing: "<label | app bundle id | path | url>" # Label or app bundle id of item to replace. Replaces the item with the given dock label or adds the item to the end if item to replace is not found"
-      position: "<[+/-]index_number | beginning | end | middle>" # Inserts the item at a fixed position: can be position by index number or keyword"
-      after: "<label | application bundle id>" # Inserts the item immediately after the given dock label or at the end if the item is not found
-      before: "<label | application bundle id>" # Inserts the item immediately before the given dock label or at the end if the item is not found
-      section: "<apps | others>" # Specifies whether the item should be added to the apps or others section
-      display: "<folder | stack>" # Folder display option when adding a folder
-      sort: "<name | dateadded | datemodified | datecreated | kind>" # Folder sort option when adding a folder
-      type: "<spacer | small-spacer | flex-spacer>" # Specify a custom tile type for adding spacers
-      allhomes: "<true | false>" # Whether to attempt to locate all home directories and perform the operation on each of them (default: false)
+    - label: <label> # Used in search for existing items or names new apps"
+      action: <add | remove | move>
+      path: <label | app bundle id | path | url> # Example: /System/Applications/TextEdit.app
+      replacing: <label | app bundle id | path | url> # Label or app bundle id of item to replace. Replaces the item with the given dock label or adds the item to the end if item to replace is not found"
+      position: <[+/-]index_number | beginning | end | middle> # Inserts the item at a fixed position: can be position by index number or keyword"
+      after: <label | application bundle id> # Inserts the item immediately after the given dock label or at the end if the item is not found
+      before: <label | application bundle id> # Inserts the item immediately before the given dock label or at the end if the item is not found
+      section: <apps | others> # Specifies whether the item should be added to the apps or others section
+      display: <folder | stack> # Folder display option when adding a folder
+      sort: <name | dateadded | datemodified | datecreated | kind> # Folder sort option when adding a folder
+      type: <spacer | small-spacer | flex-spacer> # Specify a custom tile type for adding spacers
+      allhomes: <true | false> # Whether to attempt to locate all home directories and perform the operation on each of them (default: false)
 ```
 
-
+<br>
 
 ### → Adding
 
@@ -87,7 +87,7 @@ dockutil:
 
 ```yaml
 dockutil:
-	# ...
+  # ...
   dockitems:
     - label: TextEdit
       action: add
@@ -112,10 +112,10 @@ dockutil:
     action: add
     path: /System/Applications/TextEdit.app
     after: Time Machine
-    allhomes: true
+    allhomes: true # optional parameter
 ```
 
-
+<br>
 
 ### → Adding with Replace
 
@@ -129,7 +129,7 @@ dockutil:
     replacing: Time Machine
 ```
 
-
+<br>
 
 ### → Adding folders
 
@@ -142,16 +142,51 @@ dockutil:
     path: ~/Downloads
     view: grid
     display: folder
-    allhomes: true
+    allhomes: true # optional parameter
 ```
 
+<br>
 
+### → Removing
+
+**Removes** `TextEdit` in every user's Dock on that machine:
+
+```yaml
+...
+  - label: TextEdit
+    action: remove
+    allhomes: true # optional parameter
+```
+
+**Removes** all spacer tiles:
+
+```yaml
+...
+  - label: spacer-tiles
+    action: remove
+```
+
+<br>
+
+### → Moving
+
+**Moves** `System Preferences` to the second slot on every user's dock on that machine:
+
+```yaml
+...
+  - label: System Preferences
+    action: move
+    position: end # <[+/-]index_number | beginning | end | middle>
+    allhomes: true # optional parameter
+```
+
+<br>
 
 ## 📦 Dependencies
 
   - (Soft dependency) `geerlingguy.homebrew`
 
-
+<br>
 
 ## 📗 Example Playbook
 
@@ -166,15 +201,15 @@ dockutil:
       dockitems:
         - name: Messages
           action: add
-          path: /System/Applications/Messages.app/
+          path: /System/Applications/Messages.app
 
         - name: Messages
           action: add
-          path: /Applications/Safari.app/
+          path: /Applications/Safari.app
 
         - name: Sublime Text
           action: add
-          path: "/Applications/Sublime Text.app/"
+          path: /Applications/Sublime Text.app
           position: 3
 
   roles:
@@ -182,13 +217,62 @@ dockutil:
     - lotyp.dock
 ```
 
+<br>
 
+## ⚙️ Development
+
+To install dependencies and start development you can check contents of our `Makefile`
+
+**Install** depdendencies:
+
+```bash
+$ make install-deps
+```
+
+**Install** all git hooks:
+
+```bash
+$ make hooks
+```
+
+<br>
+
+## 🧪 Testing
+
+For local testing you can use these comands to test whole role or separate tasks:
+
+> :warning: **Notice**: By defaut all tests are ran against your local machine!
+
+```bash
+# run all tasks: validation, install, add, move, remove
+$ make test
+
+# run only validation tasks
+$ make test-validate
+
+# run dockutil installation tasks
+$ make test-install
+
+# run validation, add, remove and move tasks
+$ make test-manipulate
+
+# run validation and add tasks
+$ make test-add
+
+# run validation and remove tasks
+$ make test-remove
+
+# run validation and move tasks
+$ make test-move
+```
+
+<br>
 
 ## 🤝 License
 
 [![Licence](https://img.shields.io/github/license/wayofdev/ansible-role-dock?style=for-the-badge)](./LICENSE)
 
-
+<br>
 
 ## 🙆🏼‍♂️ Author Information
 
