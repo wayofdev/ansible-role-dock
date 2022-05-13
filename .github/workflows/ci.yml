@@ -66,6 +66,7 @@ jobs:
           set -eux
           pip install ansible
           ansible-galaxy install -r requirements.yml
+          cp tests/defaults/main.yml defaults/main.yml
 
       - name: Test the playbook.
         run: ansible-playbook tests/test.yml

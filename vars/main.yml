@@ -46,3 +46,5 @@ validation_lists:
     - beginning
     - middle
     - end
+
+dockitems_to_add: []

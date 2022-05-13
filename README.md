@@ -79,8 +79,6 @@ dockutil:
       allhomes: <true | false> # Whether to attempt to locate all home directories and perform the operation on each of them (default: false)
 ```
 
-<br>
-
 ### → Adding
 
 **Adds** `TextEdit.app` to the end of the current user's Dock:
@@ -115,8 +113,6 @@ dockutil:
     allhomes: true # optional parameter
 ```
 
-<br>
-
 ### → Adding with Replace
 
 **Replaces** `Time Machine` with `Mail.app` in the current user's Dock
@@ -128,8 +124,6 @@ dockutil:
     path: /System/Applications/Mail.app
     replacing: Time Machine
 ```
-
-<br>
 
 ### → Adding folders
 
@@ -144,8 +138,6 @@ dockutil:
     display: folder
     allhomes: true # optional parameter
 ```
-
-<br>
 
 ### → Removing
 
@@ -165,8 +157,6 @@ dockutil:
   - label: spacer-tiles
     action: remove
 ```
-
-<br>
 
 ### → Moving
 

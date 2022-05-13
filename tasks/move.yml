@@ -12,8 +12,6 @@
   tags:
     - dock-move
 
-# Incomplete !
-
 - name: Dockutil | Moving items
   ansible.builtin.shell: "{{ lookup('template', './templates/move.j2') | replace('\n', '') | trim }}"
   loop_control:
