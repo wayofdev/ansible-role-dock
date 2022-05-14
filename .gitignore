@@ -4,4 +4,4 @@
 .cache
 
 ansible.cfg
-inventory
+inventory.yml

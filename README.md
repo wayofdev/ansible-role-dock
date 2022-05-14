@@ -10,6 +10,7 @@
 
 <div align="center">
 <a href="https://actions-badge.atrox.dev/wayofdev/ansible-role-dock/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Fansible-role-dock%2Fbadge&style=flat-square"/></a>
+<a href="https://galaxy.ansible.com/lotyp/ansible-role-dock"><img alt="Ansible Role" src="https://img.shields.io/ansible/role/59069?style=flat-square"/></a>
 <a href="https://github.com/wayofdev/ansible-role-dock/tags"><img src="https://img.shields.io/github/v/tag/wayofdev/ansible-role-dock?sort=semver&style=flat-square" alt="Latest Version"></a>
 <a href="https://galaxy.ansible.com/lotyp/dock">
 <img alt="Ansible Quality Score" src="https://img.shields.io/ansible/quality/59069?style=flat-square"/></a>
@@ -22,8 +23,9 @@
 
 # Ansible Role: MacOS Dock Automation
 
-
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing Dock items. You can add, remove and re-arrange Dock items.
+
+If you **like/use** this role, please consider **starring** it. Thanks!
 
 ### → Benefits of this role:
 
@@ -255,6 +257,17 @@ $ make test-remove
 # run validation and move tasks
 $ make test-move
 ```
+
+<br>
+
+## 🧩 Compatibility
+
+This role has been tested on these systems:
+
+| system / container | tag      |
+| :----------------- | -------- |
+| macos              | monterey |
+| macos              | big-sur  |
 
 <br>
 
