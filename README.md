@@ -27,6 +27,8 @@ Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil
 
 If you **like/use** this role, please consider **starring** it. Thanks!
 
+<br>
+
 ### → Benefits of this role:
 
 * This version supports latest 3.x [dockutil](https://github.com/kcrawford/dockutil)
@@ -41,8 +43,7 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 
 ## 📑 Requirements
 
-  - **Homebrew**: Requires `homebrew` already installed (you can use `geerlingguy.mac.homebrew` to install it on your Mac).
-  - **ansible.community.general** – installation handled by `Makefile`
+  - **Homebrew**: Requires `homebrew` already installed (you can use `wayofdev.homebrew` to install it on your macOS).
 
 <br>
 
@@ -50,54 +51,55 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 
 Section shows all possible variants of adding, moving, replacing and removing of applications, spacers, folders. Available variables are listed below, along with example values (see `defaults/main.yml`):
 
+<br>
+
 ### → Structure
 
 Structure of dictionary item for **adding** apps. All available options are listend below:
 
 ```yaml
-dockutil:
-  # Should we try to install dockutil?
-  install: <true | false> # (default: true) Install dockutil using homebrew.
+# Should we try to install dockutil?
+dock_dockutil_install: <true | false> # (default: true) Install dockutil using homebrew.
 
-  # Path to custom or official tap of dockutil
-  tap: lotyp/formulae/dockutil # By default 3.x tap is used
+# Path to custom or official tap of dockutil
+dock_dockutil_tap: lotyp/formulae/dockutil # By default 3.x tap is used
 
-  # Removes all contents from dock including "others" section with Downloads folder.
-  # Prefer this option on new installations together with configured "dockitems".
-  erase_all: <true | false> # Whether to attempt to erase all items in Dock including Downloads folder! (default: false)
+# Removes all contents from dock including "others" section with Downloads folder.
+# Prefer this option on new installations together with configured "dockitems".
+dock_dockitems_erase_all: <true | false> # Whether to attempt to erase all items in Dock including Downloads folder! (default: false)
 
-  dockitems:
-    - label: <label> # Used in search for existing items or names new apps"
-      action: <add | remove | move>
-      path: <label | app bundle id | path | url> # Example: /System/Applications/TextEdit.app
-      replacing: <label | app bundle id | path | url> # Label or app bundle id of item to replace. Replaces the item with the given dock label or adds the item to the end if item to replace is not found"
-      position: <[+/-]index_number | beginning | end | middle> # Inserts the item at a fixed position: can be position by index number or keyword"
-      after: <label | application bundle id> # Inserts the item immediately after the given dock label or at the end if the item is not found
-      before: <label | application bundle id> # Inserts the item immediately before the given dock label or at the end if the item is not found
-      section: <apps | others> # Specifies whether the item should be added to the apps or others section
-      display: <folder | stack> # Folder display option when adding a folder
-      sort: <name | dateadded | datemodified | datecreated | kind> # Folder sort option when adding a folder
-      type: <spacer | small-spacer | flex-spacer> # Specify a custom tile type for adding spacers
-      allhomes: <true | false> # Whether to attempt to locate all home directories and perform the operation on each of them (default: false)
+dock_dockitems:
+  - label: <label> # Used in search for existing items or names new apps"
+    action: <add | remove | move>
+    path: <label | app bundle id | path | url> # Example: /System/Applications/TextEdit.app
+    replacing: <label | app bundle id | path | url> # Label or app bundle id of item to replace. Replaces the item with the given dock label or adds the item to the end if item to replace is not found"
+    position: <[+/-]index_number | beginning | end | middle> # Inserts the item at a fixed position: can be position by index number or keyword"
+    after: <label | application bundle id> # Inserts the item immediately after the given dock label or at the end if the item is not found
+    before: <label | application bundle id> # Inserts the item immediately before the given dock label or at the end if the item is not found
+    section: <apps | others> # Specifies whether the item should be added to the apps or others section
+    display: <folder | stack> # Folder display option when adding a folder
+    sort: <name | dateadded | datemodified | datecreated | kind> # Folder sort option when adding a folder
+    type: <spacer | small-spacer | flex-spacer> # Specify a custom tile type for adding spacers
+    allhomes: <true | false> # Whether to attempt to locate all home directories and perform the operation on each of them (default: false)
 ```
+
+<br>
 
 ### → Adding
 
 **Adds** `TextEdit.app` to the end of the current user's Dock:
 
 ```yaml
-dockutil:
-  # ...
-  dockitems:
-    - label: TextEdit
-      action: add
-      path: /System/Applications/TextEdit.app
+dock_dockitems:
+  - label: TextEdit
+    action: add
+    path: /System/Applications/TextEdit.app
 ```
 
 **Adds** `Time Machine` in the middle of Dock:
 
 ```yaml
-...
+dock_dockitems:
   - label: Time Machine
     action: add
     path: /System/Applications/Time Machine.app
@@ -107,7 +109,7 @@ dockutil:
 **Adds** TextEdit.app after the item `Time Machine` in every user's Dock on that machine:
 
 ```yaml
-...
+dock_dockitems:
   - label: TextEdit
     action: add
     path: /System/Applications/TextEdit.app
@@ -115,24 +117,28 @@ dockutil:
     allhomes: true # optional parameter
 ```
 
+<br>
+
 ### → Adding with Replace
 
 **Replaces** `Time Machine` with `Mail.app` in the current user's Dock
 
 ```yaml
-...
+dock_dockitems:
   - label: Mail
     action: add
     path: /System/Applications/Mail.app
     replacing: Time Machine
 ```
 
+<br>
+
 ### → Adding folders
 
 **Adds** `Downloads` folder to `others` section of Dock menu. On click will open preview in grid mode.
 
 ```yaml
-...
+dock_dockitems:
   - label: Downloads
     action: add
     path: ~/Downloads
@@ -141,12 +147,14 @@ dockutil:
     allhomes: true # optional parameter
 ```
 
+<br>
+
 ### → Removing
 
 **Removes** `TextEdit` in every user's Dock on that machine:
 
 ```yaml
-...
+dock_dockitems:
   - label: TextEdit
     action: remove
     allhomes: true # optional parameter
@@ -155,17 +163,19 @@ dockutil:
 **Removes** all spacer tiles:
 
 ```yaml
-...
+dock_dockitems:
   - label: spacer-tiles
     action: remove
 ```
+
+<br>
 
 ### → Moving
 
 **Moves** `System Preferences` to the second slot on every user's dock on that machine:
 
 ```yaml
-...
+dock_dockitems:
   - label: System Preferences
     action: move
     position: end # <[+/-]index_number | beginning | end | middle>
@@ -176,7 +186,7 @@ dockutil:
 
 ## 📦 Dependencies
 
-  - (Soft dependency) `geerlingguy.homebrew`
+  - (Soft dependency) `wayofdev.homebrew`
 
 <br>
 
@@ -187,26 +197,25 @@ dockutil:
 - hosts: localhost
 
   vars:
-    dockutil:
-      erase_all: true
+		dock_dockutil_install: true
+		dock_dockitems_erase_all: true
+    dock_dockitems:
+      - name: Messages
+        action: add
+        path: /System/Applications/Messages.app
 
-      dockitems:
-        - name: Messages
-          action: add
-          path: /System/Applications/Messages.app
+      - name: Messages
+        action: add
+        path: /Applications/Safari.app
 
-        - name: Messages
-          action: add
-          path: /Applications/Safari.app
-
-        - name: Sublime Text
-          action: add
-          path: /Applications/Sublime Text.app
-          position: 3
+      - name: Sublime Text
+        action: add
+        path: /Applications/Sublime Text.app
+        position: 3
 
   roles:
-    - geerlingguy.mac.homebrew
-    - lotyp.dock
+    - wayofdev.homebrew
+    - wayofdev.dock
 ```
 
 <br>
@@ -236,27 +245,26 @@ For local testing you can use these comands to test whole role or separate tasks
 > :warning: **Notice**: By defaut all tests are ran against your local machine!
 
 ```bash
-# run all tasks: validation, install, add, move, remove
+# run all tasks: validation, install, analytics, add, move, remove
 $ make test
 
-# run only validation tasks
-$ make test-validate
+# run idempotency check
+$ make test-idempotent
 
-# run dockutil installation tasks
-$ make test-install
+# or test-tag without any parameters
+$ make test-tag
 
-# run validation, add, remove and move tasks
-$ make test-manipulate
+# run tasks that validates config file
+$ export TASK_TAGS="dock-validate"; make test-tag
 
-# run validation and add tasks
-$ make test-add
+# run tasks that tries to install dockutil
+$ export TASK_TAGS="dock-install"; make test-tag
 
-# run validation and remove tasks
-$ make test-remove
-
-# run validation and move tasks
-$ make test-move
+# run all tags
+$ export TASK_TAGS="dock-validate dock-install dock-manipulate dock-add dock-remove dock-move"; make test-tag
 ```
+
+Full list of commands can be seen in `Makefile`.
 
 <br>
 

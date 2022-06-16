@@ -4,7 +4,7 @@
   ansible.builtin.fail:
     msg: >-
       "position" can only be one of: "{{ validation_lists.position | join(', ') }}" or [+/-]index_number (int)
-  loop: "{{ dockutil.dockitems }}"
+  loop: "{{ dock_dockitems }}"
   when:
     - item.position is defined
     - not item.position | regex_search('([0-9]+|beginning|middle|end)')
@@ -17,7 +17,7 @@
   ansible.builtin.fail:
     msg: >-
       "path" must be present when you are trying to add item. Specify full path to app.
-  loop: "{{ dockutil.dockitems }}"
+  loop: "{{ dock_dockitems }}"
   when:
     - item.action == 'add'
     - item.path is not defined
@@ -30,7 +30,7 @@
   ansible.builtin.fail:
     msg: >-
       "label" must be defined. Please check documentation for more info.
-  loop: "{{ dockutil.dockitems }}"
+  loop: "{{ dock_dockitems }}"
   when:
     - item.label is not defined
   run_once: true

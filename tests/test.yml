@@ -1,5 +1,11 @@
 ---
+
 - hosts: localhost
   connection: local
+
+  vars_files:
+    - ./defaults/main.yml
+
   roles:
+    # - elliotweiser.osx-command-line-tools
     - ../../

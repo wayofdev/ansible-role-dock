@@ -1,6 +1,6 @@
 ---
 
-dockutil_path: dockutil
+dock_dockutil_path: dockutil
 
 items_to_validate:
   - action
@@ -47,4 +47,6 @@ validation_lists:
     - middle
     - end
 
-dockitems_to_add: []
+dock_dockitems_to_add: []
+dock_dockitems_to_remove: []
+dock_dockitems_to_move: []

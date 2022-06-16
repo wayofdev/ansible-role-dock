@@ -3,6 +3,8 @@
 # https://ansible-lint.readthedocs.io/en/latest/configuring/
 
 skip_list:
-  - 'line-length'
-  - 'risky-shell-pipe'
-  - 'command-instead-of-shell'
+  - no-handler
+  - experimental
+  - command-instead-of-shell
+  - risky-shell-pipe
+  - line-length

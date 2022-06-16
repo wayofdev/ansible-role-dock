@@ -1,5 +1,5 @@
-{{ dockutil_path }}
-{% for item in dockitems_to_remove|flatten(levels=1) %}
+{{ dock_dockutil_path }}
+{% for item in dock_dockitems_to_remove | flatten(levels=1) %}
  --{{ item.item.action }} '{{ item.item.label }}'
  {% if item.item.allhomes is defined and item.item.allhomes %}--allhomes{% endif %}
 {% endfor %}

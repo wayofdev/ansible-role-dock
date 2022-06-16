@@ -1,9 +1,9 @@
 ---
 
 - name: Dockutil | Get information on items to add
-  ansible.builtin.shell: "{{ dockutil_path }} -f '{{ item.label }}'"
+  ansible.builtin.shell: "{{ dock_dockutil_path }} -f '{{ item.label }}'"
   register: to_add
-  loop: "{{ dockutil.dockitems | selectattr('action', 'equalto', 'add') }}"
+  loop: "{{ dock_dockitems | selectattr('action', 'equalto', 'add') }}"
   changed_when: false
   failed_when: >
     "No such file or directory" in to_add.stdout
@@ -13,7 +13,7 @@
 
 - name: Dockutil | Filter out already added items
   ansible.builtin.set_fact:
-    dockitems_to_add: "{{ dockitems_to_add | default([]) + [item] }}"
+    dock_dockitems_to_add: "{{ dock_dockitems_to_add | default([]) + [item] }}"
   loop: "{{ to_add.results | rejectattr('stdout', 'search', 'was found in') }}"
   tags:
     - dock-add
@@ -23,6 +23,6 @@
   loop_control:
     label: "{{ item.item }}"
   changed_when: false
-  when: dockitems_to_add is defined
+  when: dock_dockitems_to_add is defined
   tags:
     - dock-add
