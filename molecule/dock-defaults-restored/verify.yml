@@ -1,0 +1,8 @@
+---
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Molecule | Verify | Load scenario variables
+      include_vars: vars/main.yml

@@ -29,11 +29,11 @@
   vars:
     dock_dockitems_to_remove: []
 
-- name: Dockutil | Adding items
+- name: Dockutil | Removing items
   ansible.builtin.shell: "{{ lookup('template', './templates/remove.j2') | replace('\n', '') | trim }}"
   loop_control:
     label: "{{ item.item }}"
   changed_when: false
-  when: dock_dockitems_to_remove is defined
+  when: dock_dockitems_to_remove is defined and (dock_dockitems_to_remove | length > 0)
   tags:
     - dock-remove

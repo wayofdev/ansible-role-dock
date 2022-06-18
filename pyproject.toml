@@ -10,10 +10,11 @@ python = "^3.8"
 ansible = "^5.8.0"
 
 [tool.poetry.dev-dependencies]
-molecule = "^3.6.1"
+molecule = "^4.0.0"
 ansible-compat = "^2.1.0"
 ansible-lint = "^6.2.2"
 yamllint = "^1.26.3"
+jmespath = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

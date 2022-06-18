@@ -1,5 +1,5 @@
 {{ dock_dockutil_path }}
-{% for item in dock_dockitems_to_add | flatten(levels=1) %}
+{% for item in dock_dockitems_to_add %}
  --{{ item.item.action }} '{{ item.item.path }}'
  {% if item.item.position is defined %}--position {{ item.item.position }}{% endif %}
  {% if item.item.replacing is defined and item.item.replacing | length %}--replacing '{{ item.item.replacing }}'{% endif %}

@@ -1,4 +1,8 @@
 ---
 
+roles:
+  - name: elliotweiser.osx-command-line-tools
+  - name: wayofdev.homebrew
+
 collections:
   - name: community.general
