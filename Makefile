@@ -22,6 +22,7 @@ REQS ?= requirements.yml
 INSTALL_POETRY ?= true
 POETRY ?= poetry run
 
+# leave empty to disable
 # -v - verbose;
 # -vvv - more details
 # -vvv - enable connection debugging
@@ -45,12 +46,30 @@ test-idempotent:
 	cd $(WORKDIR) && $(TEST_IDEMPOTENT)
 .PHONY: test-idempotent
 
+test-validate: TASK_TAGS="dock-validate"
+test-validate: test-tag
+
+test-install: TASK_TAGS="dock-install"
+test-install: test-tag
+
+test-manipulate: TASK_TAGS="dock-manipulate"
+test-manipulate: test-tag
+
+test-add: TASK_TAGS="dock-add"
+test-add: test-tag
+
+test-remove: TASK_TAGS="dock-remove"
+test-remove: test-tag
+
+test-move: TASK_TAGS="dock-move"
+test-move: test-tag
+
 test-tag:
 	cd $(WORKDIR) && $(TEST_PLAYBOOK) --tags $(TASK_TAGS)
 .PHONY: test-tag
 
 m-test:
-	poetry run molecule test -- -vvv
+	poetry run molecule test -- $(DEBUG_VERBOSITY)
 .PHONY: m-test
 
 debug-version:
