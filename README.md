@@ -31,24 +31,23 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 
 ## 🗂 Table of contents
 
-   * [Benefits of this role](#-benefits-of-this-role)
-   * [Requirements](#-requirements)
-
- * [Role Variables](#-role-variables)
-   * [Structure](#-structure)
-   * [Adding](#-adding)
-   * [Adding with Replace](#-adding-with-replace)
-   * [Adding folders](#-adding-folders)
-   * [Removing](#-removing)
-   * [Moving](#-moving)
- * [Example Playbook](#-example-playbook)
- * [Development](#-development)
- * [Testing](#-testing)
- * [Dependencies](#-dependencies)
- * [Compatibility](#-compatibility)
- * [License](#-license)
- * [Author Information](#-author-information)
- * [Credits and Resources](#-credits-and-resources)
+* [Benefits of this role](#-benefits-of-this-role)
+* [Requirements](#-requirements)
+* [Role Variables](#-role-variables)
+  * [Structure](#-structure)
+  * [Adding](#-adding)
+  * [Adding with Replace](#-adding-with-replace)
+  * [Adding folders](#-adding-folders)
+  * [Removing](#-removing)
+  * [Moving](#-moving)
+* [Example Playbook](#-example-playbook)
+* [Development](#-development)
+* [Testing](#-testing)
+* [Dependencies](#-dependencies)
+* [Compatibility](#-compatibility)
+* [License](#-license)
+* [Author Information](#-author-information)
+* [Credits and Resources](#-credits-and-resources)
 
 <br>
 
@@ -225,7 +224,7 @@ dock_dockitems:
 - hosts: localhost
 
   vars:
-		dock_dockitems_erase_all: true
+    dock_dockitems_erase_all: true
     dock_dockitems:
       - label: Messages
         action: add
