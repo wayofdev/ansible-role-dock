@@ -23,6 +23,7 @@
 
 - name: Dockutil | Include | Install dockutil
   ansible.builtin.include_tasks: install.yml
+  when: dock_dockutil_install | bool
   tags:
     - dockutil-install
 

@@ -1,10 +1,10 @@
-{{ dockutil_path }}
-{% for item in dockitems_to_add|flatten(levels=1) %}
+{{ dock_dockutil_path }}
+{% for item in dock_dockitems_to_add %}
  --{{ item.item.action }} '{{ item.item.path }}'
  {% if item.item.position is defined %}--position {{ item.item.position }}{% endif %}
- {% if item.item.replacing is defined and item.item.replacing|length %}--replacing '{{ item.item.replacing }}'{% endif %}
- {% if item.item.before is defined and item.item.before|length %}--before '{{ item.item.before }}'{% endif %}
- {% if item.item.after is defined and item.item.after|length %}--after '{{ item.item.after }}'{% endif %}
+ {% if item.item.replacing is defined and item.item.replacing | length %}--replacing '{{ item.item.replacing }}'{% endif %}
+ {% if item.item.before is defined and item.item.before | length %}--before '{{ item.item.before }}'{% endif %}
+ {% if item.item.after is defined and item.item.after | length %}--after '{{ item.item.after }}'{% endif %}
  {% if item.item.allhomes is defined and item.item.allhomes %}--allhomes{% endif %}
  {% if item.item.view is defined %}--view {{ item.item.view }}{% endif %}
  {% if item.item.display is defined %}--display {{ item.item.display }}{% endif %}

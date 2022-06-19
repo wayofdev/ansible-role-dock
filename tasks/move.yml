@@ -1,14 +1,14 @@
 ---
 
 - name: Dockutil | Get information on items to move
-  ansible.builtin.shell: "{{ dockutil_path }} -f '{{ item.label }}'"
-  register: to_move
-  loop: "{{ dockutil.dockitems | selectattr('action', 'equalto', 'move') }}"
+  ansible.builtin.shell: "{{ dock_dockutil_path }} -f '{{ item.label }}'"
+  register: dock_dockitems_to_move
+  loop: "{{ dock_dockitems | selectattr('action', 'equalto', 'move') }}"
   changed_when: false
   failed_when: >
-    "No such file or directory" in to_move.stdout
-    or "command not found" in to_move.stdout
-    or "was not found in" in to_move.stdout
+    "No such file or directory" in dock_dockitems_to_move.stdout
+    or "command not found" in dock_dockitems_to_move.stdout
+    or "was not found in" in dock_dockitems_to_move.stdout
   tags:
     - dock-move
 
@@ -17,6 +17,6 @@
   loop_control:
     label: "{{ item.item }}"
   changed_when: false
-  when: dockitems_to_move is defined
+  when: dock_dockitems_to_move.results is defined and (dock_dockitems_to_move.results | length > 0)
   tags:
     - dock-move

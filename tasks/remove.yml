@@ -1,18 +1,18 @@
 ---
 
 - name: Dockutil | Remove all dock items
-  ansible.builtin.shell: "{{ dockutil_path }} --remove all"
+  ansible.builtin.shell: "{{ dock_dockutil_path }} --remove all"
   register: removed_items_task
-  when: dockutil.erase_all|bool
+  when: dock_dockitems_erase_all | bool
   changed_when: false
   tags:
     - dock-manipulate
     - dock-remove
 
 - name: Dockutil | Get information on items to remove
-  ansible.builtin.shell: "{{ dockutil_path }} -f '{{ item.label }}'"
+  ansible.builtin.shell: "{{ dock_dockutil_path }} -f '{{ item.label }}'"
   register: to_remove
-  loop: "{{ dockutil.dockitems | selectattr('action', 'equalto', 'remove') }}"
+  loop: "{{ dock_dockitems | selectattr('action', 'equalto', 'remove') }}"
   changed_when: false
   failed_when: >
     "No such file or directory" in to_remove.stdout
@@ -22,18 +22,18 @@
 
 - name: Dockutil | Filter out already removed items
   ansible.builtin.set_fact:
-    dockitems_to_remove: "{{ dockitems_to_remove + [item] }}"
+    dock_dockitems_to_remove: "{{ dock_dockitems_to_remove + [item] }}"
   loop: "{{ to_remove.results | rejectattr('stdout', 'search', 'was not found in') }}"
   tags:
     - dock-remove
   vars:
-    dockitems_to_remove: []
+    dock_dockitems_to_remove: []
 
-- name: Dockutil | Adding items
+- name: Dockutil | Removing items
   ansible.builtin.shell: "{{ lookup('template', './templates/remove.j2') | replace('\n', '') | trim }}"
   loop_control:
     label: "{{ item.item }}"
   changed_when: false
-  when: dockitems_to_remove is defined
+  when: dock_dockitems_to_remove is defined and (dock_dockitems_to_remove | length > 0)
   tags:
     - dock-remove

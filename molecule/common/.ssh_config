@@ -1,0 +1,4 @@
+Host macos-12-virtual-machine
+    Hostname 10.211.55.3
+    User tester
+    IdentityFile ~/.ssh/id_rsa

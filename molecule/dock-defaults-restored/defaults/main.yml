@@ -1,0 +1,71 @@
+---
+
+dock_dockitems_erase_all: true
+dock_dockitems:
+  - label: Launchpad
+    action: add
+    path: /System/Applications/Launchpad.app
+
+  - label: Safari
+    action: add
+    path: /Applications/Safari.app
+
+  - label: Messages
+    action: add
+    path: /System/Applications/Messages.app
+
+  - label: Mail
+    action: add
+    path: /System/Applications/Mail.app
+
+  - label: Maps
+    action: add
+    path: /System/Applications/Maps.app
+
+  - label: Photos
+    action: add
+    path: /System/Applications/Photos.app
+
+  - label: FaceTime
+    action: add
+    path: /System/Applications/FaceTime.app
+
+  - label: Calendar
+    action: add
+    path: /System/Applications/Calendar.app
+
+  - label: Contacts
+    action: add
+    path: /System/Applications/Contacts.app
+
+  - label: Reminders
+    action: add
+    path: /System/Applications/Reminders.app
+
+  - label: Notes
+    action: add
+    path: /System/Applications/Notes.app
+
+  - label: TV
+    action: add
+    path: /System/Applications/TV.app
+
+  - label: Music
+    action: add
+    path: /System/Applications/Music.app
+
+  - label: Podcasts
+    action: add
+    path: /System/Applications/Podcasts.app
+
+  - label: News
+    action: add
+    path: /System/Applications/News.app
+
+  - label: App Store
+    action: add
+    path: /System/Applications/App Store.app
+
+  - label: System Preferences
+    action: add
+    path: /System/Applications/System Preferences.app

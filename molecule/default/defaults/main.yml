@@ -1,0 +1,11 @@
+---
+
+dock_dockitems_erase_all: true
+dock_dockitems:
+  - label: Launchpad
+    action: add
+    path: /System/Applications/Launchpad.app
+
+  - label: Safari
+    action: add
+    path: /Applications/Safari.app

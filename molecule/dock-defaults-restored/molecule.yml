@@ -1,0 +1,36 @@
+---
+
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+
+driver:
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: local
+      ansible_sudo_pass: "${ANSIBLE_SUDO_PASSWORD}"
+  become_method: sudo
+
+# driver:
+#   name: delegated
+#   options:
+#     managed: false
+#     login_cmd_template: 'ssh {instance} -F /tmp/ssh-config'
+#     ansible_connection_options:
+#       connection: ssh
+#       ansible_ssh_common_args: -F /tmp/ssh-config
+#       ansible_sudo_pass: "${ANSIBLE_SUDO_PASSWORD}"
+#   become_method: sudo
+
+platforms:
+  - name: macos-12-virtual-machine
+
+provisioner:
+  name: ansible
+
+verifier:
+  name: ansible
