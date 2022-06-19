@@ -1,27 +1,27 @@
 <br>
 
 <div align="center">
-<img width="456" height="60" src="./assets/logo.gh-light-mode-only.png#gh-light-mode-only">
-<img width="456" height="60" src="./assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
+<img width="456" src="https://raw.githubusercontent.com/wayofdev/ansible-role-dock/master/assets/logo.gh-light-mode-only.png#gh-light-mode-only">
+<img width="456" src="https://raw.githubusercontent.com/wayofdev/ansible-role-dock/master/assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
 </div>
+
 <br>
 
 <br>
 
 <div align="center">
 <a href="https://actions-badge.atrox.dev/wayofdev/ansible-role-dock/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Fansible-role-dock%2Fbadge&style=flat-square"/></a>
-<a href="https://galaxy.ansible.com/lotyp/ansible-role-dock"><img alt="Ansible Role" src="https://img.shields.io/ansible/role/59069?style=flat-square"/></a>
+<a href="https://galaxy.ansible.com/wayofdev/dock"><img alt="Ansible Role" src="https://img.shields.io/ansible/role/59069?style=flat-square"/></a>
 <a href="https://github.com/wayofdev/ansible-role-dock/tags"><img src="https://img.shields.io/github/v/tag/wayofdev/ansible-role-dock?sort=semver&style=flat-square" alt="Latest Version"></a>
-<a href="https://galaxy.ansible.com/lotyp/dock">
-<img alt="Ansible Quality Score" src="https://img.shields.io/ansible/quality/59069?style=flat-square"/></a>
-<a href="https://galaxy.ansible.com/lotyp/dock">
-<img alt="Ansible Role" src="https://img.shields.io/ansible/role/d/59069?style=flat-square"/></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"/></a>
+<a href="https://galaxy.ansible.com/wayofdev/dock"><img alt="Ansible Quality Score" src="https://img.shields.io/ansible/quality/59069?style=flat-square"/></a>
+<a href="https://galaxy.ansible.com/wayofdev/dock"><img alt="Ansible Role" src="https://img.shields.io/ansible/role/d/59069?style=flat-square"/></a>
+<a href="LICENSE"><img src="https://img.shields.io/github/license/wayofdev/ansible-role-dock.svg?style=flat-square&color=blue" alt="Software License"/></a>
+<a href="#"><img alt="Commits since latest release" src="https://img.shields.io/github/commits-since/wayofdev/ansible-role-dock/latest?style=flat-square"></a>
 </div>
 
 <br>
 
-# Ansible Role: MacOS Dock Automation
+# Ansible Role: macOS Dock Automation
 
 Role is used to automate use of [dockutil](https://github.com/kcrawford/dockutil) – command line tool for managing Dock items. You can add, remove and re-arrange Dock items.
 
@@ -88,10 +88,10 @@ Group controls installation of dockutil, and allows to select custom tap:
 dock_dockutil_install: <true | false> # (default: true) Install dockutil using homebrew.
 
 # Path to custom or official tap of dockutil
-dock_dockutil_tap: lotyp/formulae/dockutil # By default 3.x tap is used
+dock_dockutil_tap: lotyp/formulae/dockutil # By default, 3.x tap is used
 ```
 
-Role allows to wipe macOS dock completley:
+Role allows to wipe macOS dock completely:
 
 ```yaml
 # Removes all contents from dock including "others" section with Downloads folder.
@@ -293,7 +293,7 @@ $ make test-idempotent
 # or test-tag without any parameters
 $ make test-tag
 
-# run tasks that validates config file
+# run tasks that validate config file
 $ export TASK_TAGS="dock-validate"; make test-tag
 
 # run by tag
@@ -314,7 +314,7 @@ Full list of commands can be seen in `Makefile`.
 
 ## 📦 Dependencies
 
-Installation handled by `Makefile` and requirments are defined in `requirements.yml`
+Installation handled by `Makefile` and requirements are defined in `requirements.yml`
 
   - [wayofdev.homebrew](https://github.com/wayofdev/ansible-role-homebrew) - soft dependency, required if Homebrew isn't installed yet
   - [ansible.community.general](https://docs.ansible.com/ansible/latest/collections/community/general/index.html)
