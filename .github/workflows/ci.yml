@@ -38,40 +38,6 @@ jobs:
       - name: Run linting tasks
         run: set -eux; make lint
 
-  integration-macos:
-    name: Integration check on macOS
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          # - macos-11
-          - macos-12
-
-    steps:
-      - name: Check out the codebase
-        uses: actions/checkout@v3
-
-      - name: Install poetry
-        uses: gi0baro/setup-poetry-bin@v1
-
-      - name: Install test dependencies
-        run: export INSTALL_POETRY=false; make install
-
-      - name: Test the playbook
-        run: make test
-
-      - name: Idempotence check
-        run: |
-          IDEMPOTENCE=$(mktemp)
-          cd tests && poetry run ansible-playbook test.yml | tee -a ${IDEMPOTENCE}
-          tail ${IDEMPOTENCE} \
-            | grep -q 'changed=0.*failed=0' \
-            && (echo 'Idempotence test: pass' && exit 0) \
-            || (echo 'Idempotence test: fail' && exit 1)
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-          ANSIBLE_STDOUT_CALLBACK: 'unixy'
-
   integration-molecule:
     name: Integration check on macOS with various molecule scenarios
     runs-on: macos-12
@@ -100,7 +66,6 @@ jobs:
     if: github.event.inputs.shouldPublish == 'yes' || github.ref == 'refs/heads/master'
     needs:
       - lint
-      - integration-macos
       - integration-molecule
     runs-on: ubuntu-latest
     steps:
