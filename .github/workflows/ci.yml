@@ -44,7 +44,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - macos-11
+          # - macos-11
           - macos-12
 
     steps:
@@ -101,6 +101,7 @@ jobs:
     needs:
       - lint
       - integration-macos
+      - integration-molecule
     runs-on: ubuntu-latest
     steps:
       - name: Publish to Ansible Galaxy

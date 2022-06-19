@@ -15,10 +15,6 @@ galaxy_info:
       versions:
         - Monterey
         - Big-Sur
-    - name: macOS
-      versions:
-        - Monterey
-        - Big-Sur
 
   galaxy_tags:
     - dock

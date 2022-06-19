@@ -29,11 +29,34 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 
 <br>
 
-### → Benefits of this role:
+## 🗂 Table of contents
+
+   * [Benefits of this role](#-benefits-of-this-role)
+   * [Requirements](#-requirements)
+
+ * [Role Variables](#-role-variables)
+   * [Structure](#-structure)
+   * [Adding](#-adding)
+   * [Adding with Replace](#-adding-with-replace)
+   * [Adding folders](#-adding-folders)
+   * [Removing](#-removing)
+   * [Moving](#-moving)
+ * [Example Playbook](#-example-playbook)
+ * [Development](#-development)
+ * [Testing](#-testing)
+ * [Dependencies](#-dependencies)
+ * [Compatibility](#-compatibility)
+ * [License](#-license)
+ * [Author Information](#-author-information)
+ * [Credits and Resources](#-credits-and-resources)
+
+<br>
+
+## ⭐️ Benefits of this role:
 
 * This version supports latest 3.x [dockutil](https://github.com/kcrawford/dockutil)
 * Items are added, positioned and removed in single command run instead of loops
-* Latest MacOS Monterey support
+* Latest macOS Monterey support
 * Can erase all items contained in Dock with one setting
 * No need for ansible handlers and sudo rights to do `killall` to restart Dock, as it is handled by `dockutil` by itself!
 * Supports all `dockutil` options, like:
@@ -44,6 +67,9 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 ## 📑 Requirements
 
   - **Homebrew**: Requires `homebrew` already installed (you can use `wayofdev.homebrew` to install it on your macOS).
+  - Up-to-date version of ansible. During maintenance/development, we stick to ansible versions and will use new features if they are available (and update `meta/main.yml` for the minimum version).
+- Compatible OS. See [compatibility](#-compatibility) table.
+- Role has dependencies on third-party roles on different operating systems. See `requirements.yml` and [dependencies](#-dependencies) section.
 
 <br>
 
@@ -55,7 +81,7 @@ Section shows all possible variants of adding, moving, replacing and removing of
 
 ### → Structure
 
-Structure of dictionary item for **adding** apps. All available options are listend below:
+Group controls installation of dockutil, and allows to select custom tap:
 
 ```yaml
 # Should we try to install dockutil?
@@ -63,11 +89,19 @@ dock_dockutil_install: <true | false> # (default: true) Install dockutil using h
 
 # Path to custom or official tap of dockutil
 dock_dockutil_tap: lotyp/formulae/dockutil # By default 3.x tap is used
+```
 
+Role allows to wipe macOS dock completley:
+
+```yaml
 # Removes all contents from dock including "others" section with Downloads folder.
 # Prefer this option on new installations together with configured "dockitems".
 dock_dockitems_erase_all: <true | false> # Whether to attempt to erase all items in Dock including Downloads folder! (default: false)
+```
 
+Variable structure to add, move, or remove items in Dock:
+
+```yaml
 dock_dockitems:
   - label: <label> # Used in search for existing items or names new apps"
     action: <add | remove | move>
@@ -96,7 +130,7 @@ dock_dockitems:
     path: /System/Applications/TextEdit.app
 ```
 
-**Adds** `Time Machine` in the middle of Dock:
+**Adds** `Time Machine.app` in the middle of Dock:
 
 ```yaml
 dock_dockitems:
@@ -106,7 +140,7 @@ dock_dockitems:
     position: middle
 ```
 
-**Adds** TextEdit.app after the item `Time Machine` in every user's Dock on that machine:
+**Adds** `TextEdit.app` after the item `Time Machine.app` in every user's Dock on that machine:
 
 ```yaml
 dock_dockitems:
@@ -121,7 +155,7 @@ dock_dockitems:
 
 ### → Adding with Replace
 
-**Replaces** `Time Machine` with `Mail.app` in the current user's Dock
+**Replaces** `Time Machine.app` with `Mail.app` in the current user's Dock
 
 ```yaml
 dock_dockitems:
@@ -184,12 +218,6 @@ dock_dockitems:
 
 <br>
 
-## 📦 Dependencies
-
-  - (Soft dependency) `wayofdev.homebrew`
-
-<br>
-
 ## 📗 Example Playbook
 
 ```yaml
@@ -197,18 +225,17 @@ dock_dockitems:
 - hosts: localhost
 
   vars:
-		dock_dockutil_install: true
 		dock_dockitems_erase_all: true
     dock_dockitems:
-      - name: Messages
+      - label: Messages
         action: add
         path: /System/Applications/Messages.app
 
-      - name: Messages
+      - label: Safari
         action: add
         path: /Applications/Safari.app
 
-      - name: Sublime Text
+      - label: Sublime Text
         action: add
         path: /Applications/Sublime Text.app
         position: 3
@@ -224,7 +251,13 @@ dock_dockitems:
 
 To install dependencies and start development you can check contents of our `Makefile`
 
-**Install** depdendencies:
+**Install** [poetry](https://github.com/python-poetry/poetry) using [poetry-bin](https://github.com/gi0baro/poetry-bin) and all dev python dependencies:
+
+```bash
+$ make install
+```
+
+**Install** only python dependencies, assuming that you already have poetry:
 
 ```bash
 $ make install-deps
@@ -234,6 +267,12 @@ $ make install-deps
 
 ```bash
 $ make hooks
+```
+
+**Lint** all role files:
+
+```bash
+$ make lint
 ```
 
 <br>
@@ -257,14 +296,28 @@ $ make test-tag
 # run tasks that validates config file
 $ export TASK_TAGS="dock-validate"; make test-tag
 
-# run tasks that tries to install dockutil
-$ export TASK_TAGS="dock-install"; make test-tag
+# run by tag
+$ make test-validate
+$ make test-install
+$ make test-manipulate
+$ make test-add
+$ make test-remove
+$ make test-move
 
-# run all tags
-$ export TASK_TAGS="dock-validate dock-install dock-manipulate dock-add dock-remove dock-move"; make test-tag
+# run molecule tests
+$ make m-test
 ```
 
 Full list of commands can be seen in `Makefile`.
+
+<br>
+
+## 📦 Dependencies
+
+Installation handled by `Makefile` and requirments are defined in `requirements.yml`
+
+  - [wayofdev.homebrew](https://github.com/wayofdev/ansible-role-homebrew) - soft dependency, required if Homebrew isn't installed yet
+  - [ansible.community.general](https://docs.ansible.com/ansible/latest/collections/community/general/index.html)
 
 <br>
 
@@ -281,7 +334,7 @@ This role has been tested on these systems:
 
 ## 🤝 License
 
-[![Licence](https://img.shields.io/github/license/wayofdev/ansible-role-dock?style=for-the-badge)](./LICENSE)
+[![Licence](https://img.shields.io/github/license/wayofdev/ansible-role-dock?style=for-the-badge&color=blue)](./LICENSE)
 
 <br>
 
@@ -289,4 +342,11 @@ This role has been tested on these systems:
 
 This role was created in **2022** by [lotyp / wayofdev](https://github.com/wayofdev).
 
-Inspired by original role created by [@geerlingguy](https://github.com/geerlingguy) as a part of [ansible-collection-mac](https://github.com/geerlingguy/ansible-collection-mac).
+<br>
+
+## 🤫 Credits and Resources
+
+**Inspired by:**
+
+* original role created by [@geerlingguy](https://github.com/geerlingguy) as a part of [ansible-collection-mac](https://github.com/geerlingguy/ansible-collection-mac).
+* [dockutil](https://github.com/kcrawford/dockutil)
