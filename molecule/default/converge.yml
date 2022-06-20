@@ -1,9 +1,0 @@
----
-
-- name: Molecule | Converge | Default scenario
-  hosts: all
-  connection: local
-
-  tasks:
-    - name: Molecule | Converge | Include setup tasks
-      include_tasks: "../common/tasks/setup.yml"

@@ -48,6 +48,7 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 * [License](#-license)
 * [Author Information](#-author-information)
 * [Credits and Resources](#-credits-and-resources)
+* [Contributors](#-contributors)
 
 <br>
 
@@ -221,7 +222,10 @@ dock_dockitems:
 
 ```yaml
 ---
-- hosts: localhost
+- hosts: all
+
+  environment:
+    - PATH: "/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:{{ ansible_env.PATH }}"
 
   vars:
     dock_dockitems_erase_all: true
@@ -283,8 +287,12 @@ For local testing you can use these comands to test whole role or separate tasks
 > :warning: **Notice**: By defaut all tests are ran against your local machine!
 
 ```bash
-# run all tasks: validation, install, analytics, add, move, remove
+# run molecule scenarios against localhost
 $ make test
+
+# run molecule scenarios against remote machines over SSH
+# this will need VM setup and configuration
+$ make test-remote
 
 # run idempotency check
 $ make test-idempotent
@@ -343,9 +351,19 @@ This role was created in **2022** by [lotyp / wayofdev](https://github.com/wayof
 
 <br>
 
-## 🤫 Credits and Resources
+## 🧱 Credits and Resources
 
 **Inspired by:**
 
 * original role created by [@geerlingguy](https://github.com/geerlingguy) as a part of [ansible-collection-mac](https://github.com/geerlingguy/ansible-collection-mac).
 * [dockutil](https://github.com/kcrawford/dockutil)
+
+<br>
+
+## 🫡 Contributors
+
+<img align="left" src="https://img.shields.io/github/contributors-anon/wayofdev/ansible-role-dock?style=for-the-badge"/>
+
+<a href="https://github.com/wayofdev/ansible-role-dock/graphs/contributors">
+  <img src="https://opencollective.com/wod/contributors.svg?width=890&button=false">
+</a>

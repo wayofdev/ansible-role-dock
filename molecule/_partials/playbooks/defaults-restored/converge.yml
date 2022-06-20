@@ -1,0 +1,11 @@
+---
+
+- name: Molecule | Converge | Restore all default items in dock
+  hosts: all
+
+  environment:
+    - PATH: "/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:{{ ansible_env.PATH }}"
+
+  tasks:
+    - name: Molecule | Converge | Include setup tasks
+      ansible.builtin.include_tasks: "../../tasks/setup.yml"

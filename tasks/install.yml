@@ -19,6 +19,7 @@
     name: "{{ dock_dockutil_tap }}"
     state: present
     update_homebrew: true
+    path: "/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin"
   when: dockutil_not_found
   tags:
     - dock-install

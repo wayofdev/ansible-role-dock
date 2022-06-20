@@ -17,7 +17,7 @@ driver:
   become_method: sudo
 
 platforms:
-  - name: macos-12-vm
+  - name: local-instance
 
 provisioner:
   name: ansible

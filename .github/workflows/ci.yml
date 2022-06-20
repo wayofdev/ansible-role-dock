@@ -40,7 +40,13 @@ jobs:
 
   integration-molecule:
     name: Integration check on macOS with various molecule scenarios
-    runs-on: macos-12
+    runs-on: macos-${{ matrix.os }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        os: ["12"]
+        python-version: ["3.9"]
+        scenario: ["defaults-restored-on-localhost"]
     steps:
       - name: Check out the codebase
         uses: actions/checkout@v3
@@ -48,7 +54,7 @@ jobs:
       - name: Setup python3
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install poetry
         uses: gi0baro/setup-poetry-bin@v1
@@ -57,10 +63,12 @@ jobs:
         run: export INSTALL_POETRY=false; make install
 
       - name: Run molecule tests
-        run: poetry run molecule test -- -v
+        run: poetry run molecule test --scenario-name "${SCENARIO}" -- -v
         env:
+          SCENARIO: ${{ matrix.scenario}}
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     if: github.event.inputs.shouldPublish == 'yes' || github.ref == 'refs/heads/master'

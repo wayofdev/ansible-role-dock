@@ -1,5 +1,8 @@
 ---
 
+- name: Molecule | Setup | Load default variables
+  ansible.builtin.include_vars: "../_partials/defaults/main.yml"
+
 - name: Molecule | Setup | Load scenario variables
   ansible.builtin.include_vars: defaults/main.yml
 
@@ -13,4 +16,4 @@
 
 - name: Molecule | Setup | Include wayofdev.dock
   ansible.builtin.include_role:
-    name: wayofdev.dock
+    name: ansible-role-dock

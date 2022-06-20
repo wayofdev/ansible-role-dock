@@ -1,9 +1,0 @@
----
-
-- name: Molecule | Converge | Restore all default items in dock
-  hosts: all
-  connection: local
-
-  tasks:
-    - name: Molecule | Converge | Include setup tasks
-      include_tasks: "../common/tasks/setup.yml"
