@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/wayofdev/ansible-role-dock/compare/v2.0.0...v2.1.0) (2022-06-21)
+
+
+### Features
+
+* moving to molecule tests ([6f13d69](https://github.com/wayofdev/ansible-role-dock/commit/6f13d6926515dd537243a9385d008c2eaf0bf760))
+
 ## [2.0.0](https://github.com/wayofdev/ansible-role-dock/compare/v1.1.0...v2.0.0) (2022-06-19)
 
 
