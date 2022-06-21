@@ -45,7 +45,6 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 * [Testing](#-testing)
   * [on localhost](#-on-localhost)
   * [over SSH](#-over-ssh)
-
 * [Dependencies](#-dependencies)
 * [Compatibility](#-compatibility)
 * [License](#-license)
