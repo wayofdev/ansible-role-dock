@@ -13,6 +13,7 @@ driver:
     managed: false
     ansible_connection_options:
       connection: local
+      ansible_connection: local
       ansible_sudo_pass: "${ANSIBLE_SUDO_PASSWORD}"
   become_method: sudo
 
