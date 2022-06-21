@@ -1,5 +1,7 @@
 ---
 
+homebrew_collect_analytics: false
+
 dock_dockitems_erase_all: true
 dock_dockitems:
   - label: Launchpad

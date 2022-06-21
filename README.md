@@ -224,6 +224,7 @@ dock_dockitems:
 ---
 - hosts: all
 
+	# is needed when running over SSH
   environment:
     - PATH: "/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:{{ ansible_env.PATH }}"
 
@@ -281,6 +282,8 @@ $ make lint
 <br>
 
 ## 🧪 Testing
+
+
 
 For local testing you can use these comands to test whole role or separate tasks:
 
