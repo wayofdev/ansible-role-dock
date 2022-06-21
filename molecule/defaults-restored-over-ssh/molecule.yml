@@ -11,10 +11,10 @@ driver:
   name: delegated
   options:
     managed: false
-    login_cmd_template: 'ssh {instance} -F /tmp/ssh-config'
+    login_cmd_template: 'ssh {instance} -F /tmp/ssh_config'
     ansible_connection_options:
       connection: ssh
-      ansible_ssh_common_args: -F /tmp/ssh-config
+      ansible_ssh_common_args: '-F /tmp/ssh_config'
       ansible_sudo_pass: "${ANSIBLE_SUDO_PASSWORD}"
   become_method: sudo
 

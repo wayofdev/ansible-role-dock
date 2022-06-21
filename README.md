@@ -43,6 +43,9 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 * [Example Playbook](#-example-playbook)
 * [Development](#-development)
 * [Testing](#-testing)
+  * [on localhost](#-on-localhost)
+  * [over SSH](#-over-ssh)
+
 * [Dependencies](#-dependencies)
 * [Compatibility](#-compatibility)
 * [License](#-license)
@@ -283,30 +286,27 @@ $ make lint
 
 ## 🧪 Testing
 
+You can check `Makefile` to get full list of commands for remote and local testing. For local testing you can use these comands to test whole role or separate tasks:
 
-
-For local testing you can use these comands to test whole role or separate tasks:
+### → on localhost
 
 > :warning: **Notice**: By defaut all tests are ran against your local machine!
 
 ```bash
-# run molecule scenarios against localhost
+# run all tags with scenario from ./tests/test.yml
 $ make test
-
-# run molecule scenarios against remote machines over SSH
-# this will need VM setup and configuration
-$ make test-remote
-
-# run idempotency check
-$ make test-idempotent
 
 # or test-tag without any parameters
 $ make test-tag
 
-# run tasks that validate config file
-$ export TASK_TAGS="dock-validate"; make test-tag
+# run idempotency check
+$ make test-idempotent
 
-# run by tag
+# run tasks that validate config file and does installation
+$ export TASK_TAGS="dock-validate dock-install"
+$ make test-tag
+
+# run by predefined command that executes only one tag
 $ make test-validate
 $ make test-install
 $ make test-manipulate
@@ -314,11 +314,28 @@ $ make test-add
 $ make test-remove
 $ make test-move
 
-# run molecule tests
-$ make m-test
+# run molecule tests on localhost
+$ poetry run molecule test --scenario-name defaults-restored-on-localhost -- -vvv
+
+# or with make command
+$ make m-local
 ```
 
-Full list of commands can be seen in `Makefile`.
+<br>
+
+### → over SSH
+
+```bash
+# run molecule scenarios against remote machines over SSH
+# this will need VM setup and configuration
+$ poetry run molecule test --scenario-name defaults-restored-over-ssh -- -vvv
+
+$ make m-remote
+
+# tags also can be passed
+$ export TASK_TAGS="dock-validate dock-install"
+$ make m-remote
+```
 
 <br>
 

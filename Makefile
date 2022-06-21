@@ -26,7 +26,7 @@ POETRY ?= poetry run
 # -v - verbose;
 # -vvv - more details
 # -vvv - enable connection debugging
-DEBUG_VERBOSITY ?= -v
+DEBUG_VERBOSITY ?= -vvv
 
 TEST_PLAYBOOK = $(POETRY) ansible-playbook $(PLAYBOOK) -i $(INVENTORY) $(DEBUG_VERBOSITY)
 TEST_IDEMPOTENT = $(TEST_PLAYBOOK) | tee /dev/tty | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
@@ -68,9 +68,17 @@ test-tag:
 	cd $(WORKDIR) && $(TEST_PLAYBOOK) --tags $(TASK_TAGS)
 .PHONY: test-tag
 
-m-test:
-	poetry run molecule test -- $(DEBUG_VERBOSITY)
-.PHONY: m-test
+#m-test:
+#	poetry run molecule test -- $(DEBUG_VERBOSITY)
+#.PHONY: m-test
+
+m-local:
+	poetry run molecule test --scenario-name defaults-restored-on-localhost -- -vvv --tags $(TASK_TAGS)
+.PHONY: m-local
+
+m-remote:
+	poetry run molecule test --scenario-name defaults-restored-over-ssh -- -vvv --tags $(TASK_TAGS)
+.PHONY: m-remote
 
 debug-version:
 	ansible --version
