@@ -37,3 +37,5 @@
   when: dock_dockitems_to_remove is defined and (dock_dockitems_to_remove | length > 0)
   tags:
     - dock-remove
+
+...

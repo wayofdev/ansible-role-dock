@@ -26,3 +26,5 @@
   when: dock_dockitems_to_add is defined and (dock_dockitems_to_add | length > 0)
   tags:
     - dock-add
+
+...

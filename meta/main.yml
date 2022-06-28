@@ -30,3 +30,5 @@ dependencies: []
 # Ensure that custom Ansible plugins and modules included in the main MacOps
 # collection are available to roles in other collections.
 collections: ["wayofdev.macops"]
+
+...

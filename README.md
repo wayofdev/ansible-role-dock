@@ -226,7 +226,7 @@ dock_dockitems:
 ---
 - hosts: all
 
-	# is needed when running over SSH
+  # is needed when running over SSH
   environment:
     - PATH: "/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:{{ ansible_env.PATH }}"
 

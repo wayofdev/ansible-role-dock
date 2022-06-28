@@ -4,6 +4,7 @@ extends: default
 
 ignore: |
     contrib
+    .venv
 
 # Overwrite above default rules
 rules:

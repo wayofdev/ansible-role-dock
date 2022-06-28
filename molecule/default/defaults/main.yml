@@ -11,3 +11,5 @@ dock_dockitems:
   - label: Safari
     action: add
     path: /Applications/Safari.app
+
+...

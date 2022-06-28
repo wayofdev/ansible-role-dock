@@ -71,3 +71,5 @@ dock_dockitems:
   - label: System Preferences
     action: add
     path: /System/Applications/System Preferences.app
+
+...

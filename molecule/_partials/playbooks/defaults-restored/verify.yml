@@ -6,3 +6,6 @@
   tasks:
     - name: Molecule | Verify | Load scenario variables
       include_vars: "../../defaults/main.yml"
+      tags:
+        - always
+...

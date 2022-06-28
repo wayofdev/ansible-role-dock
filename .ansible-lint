@@ -8,3 +8,9 @@ skip_list:
   - command-instead-of-shell
   - risky-shell-pipe
   - line-length
+
+exclude_paths:
+  - ./contrib
+  - ./.venv
+
+...
