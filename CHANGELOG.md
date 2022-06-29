@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/wayofdev/ansible-role-dock/compare/v2.1.0...v2.2.0) (2022-06-29)
+
+
+### Features
+
+* updating template code ([cf409e5](https://github.com/wayofdev/ansible-role-dock/commit/cf409e585dde483cda8579f4b8163cc22d05f334))
+
+
+### Bug Fixes
+
+* missing lock file ([06730fa](https://github.com/wayofdev/ansible-role-dock/commit/06730fafc55eb402271c0f8230cfcdd0d751c5b2))
+
 ## [2.1.0](https://github.com/wayofdev/ansible-role-dock/compare/v2.0.0...v2.1.0) (2022-06-21)
 
 
