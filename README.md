@@ -289,35 +289,17 @@ You can check `Makefile` to get full list of commands for remote and local testi
 
 ### → on localhost
 
-> :warning: **Notice**: By defaut all tests are ran against your local machine!
+> :warning: **Notice**: By defaut all tests are running against your local machine!
 
 ```bash
-# run all tags with scenario from ./tests/test.yml
-$ make test
-
-# or test-tag without any parameters
-$ make test-tag
-
-# run idempotency check
-$ make test-idempotent
-
-# run tasks that validate config file and does installation
-$ export TASK_TAGS="dock-validate dock-install"
-$ make test-tag
-
-# run by predefined command that executes only one tag
-$ make test-validate
-$ make test-install
-$ make test-manipulate
-$ make test-add
-$ make test-remove
-$ make test-move
-
 # run molecule tests on localhost
 $ poetry run molecule test --scenario-name defaults-restored-on-localhost -- -vvv
 
 # or with make command
 $ make m-local
+
+# choose which tags will be included
+$ export TASK_TAGS="dock-validate,dock-install"; make m-local
 ```
 
 <br>
@@ -332,7 +314,7 @@ $ poetry run molecule test --scenario-name defaults-restored-over-ssh -- -vvv
 $ make m-remote
 
 # tags also can be passed
-$ export TASK_TAGS="dock-validate dock-install"
+$ export TASK_TAGS="dock-validate,dock-install"
 $ make m-remote
 ```
 
@@ -386,3 +368,5 @@ This role was created in **2022** by [lotyp / wayofdev](https://github.com/wayof
 <a href="https://github.com/wayofdev/ansible-role-dock/graphs/contributors">
   <img src="https://opencollective.com/wod/contributors.svg?width=890&button=false">
 </a>
+
+<br>
