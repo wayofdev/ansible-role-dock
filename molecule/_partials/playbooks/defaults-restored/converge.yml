@@ -9,3 +9,6 @@
   tasks:
     - name: Molecule | Converge | Include setup tasks
       ansible.builtin.include_tasks: "../../tasks/setup.yml"
+      tags:
+        - always
+...

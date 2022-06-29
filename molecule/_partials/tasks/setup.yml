@@ -2,6 +2,8 @@
 
 - name: Molecule | Setup | Load default variables
   ansible.builtin.include_vars: "../defaults/main.yml"
+  tags:
+    - always
 
 # - name: Molecule | Setup | Load scenario variables
 #   ansible.builtin.include_vars: defaults/main.yml
@@ -9,11 +11,19 @@
 - name: Molecule | Setup | Include elliotweiser.osx-command-line-tools
   ansible.builtin.include_role:
     name: elliotweiser.osx-command-line-tools
+  tags:
+    - always
 
 - name: Molecule | Setup | Include wayofdev.homebrew
   ansible.builtin.include_role:
     name: wayofdev.homebrew
+  tags:
+    - always
 
 - name: Molecule | Setup | Include wayofdev.dock
   ansible.builtin.include_role:
     name: ansible-role-dock
+  tags:
+    - always
+
+...

@@ -20,3 +20,5 @@
   when: dock_dockitems_to_move.results is defined and (dock_dockitems_to_move.results | length > 0)
   tags:
     - dock-move
+
+...
