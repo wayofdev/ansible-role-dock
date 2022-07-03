@@ -25,7 +25,7 @@
   ansible.builtin.include_tasks: install.yml
   when: dock_dockutil_install | bool
   tags:
-    - dockutil-install
+    - dock-install
 
 - name: Dockutil | Include | Remove items
   ansible.builtin.include_tasks: remove.yml
