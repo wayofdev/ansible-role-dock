@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.0](https://github.com/wayofdev/ansible-role-dock/compare/v2.2.0...v2.3.0) (2022-07-03)
+
+
+### Features
+
+* updating py dependencies ([51f8a30](https://github.com/wayofdev/ansible-role-dock/commit/51f8a3015d7b6408cef37bb6c732abbad8491193))
+
+
+### Bug Fixes
+
+* dockutil not installing when using tags ([a4c21ca](https://github.com/wayofdev/ansible-role-dock/commit/a4c21ca7049f5c44ec0bc7b15e21825e89046fd0))
+
 ## [2.2.0](https://github.com/wayofdev/ansible-role-dock/compare/v2.1.0...v2.2.0) (2022-06-29)
 
 
