@@ -51,6 +51,7 @@ If you **like/use** this role, please consider **starring** it. Thanks!
 * [Author Information](#-author-information)
 * [Credits and Resources](#-credits-and-resources)
 * [Contributors](#-contributors)
+* [Sponsors](#-sponsors)
 
 <br>
 
@@ -370,3 +371,13 @@ This role was created in **2022** by [lotyp / wayofdev](https://github.com/wayof
 </a>
 
 <br>
+
+## 🤑 Sponsors
+
+Role development and testing was done on [Parallels Desktop Pro Edition](https://www.parallels.com/products/desktop/pro/), thanks to [Parallels](https://www.parallels.com/eu/)
+
+<div>
+<a href="https://www.parallels.com/products/desktop/pro/">
+<img width="180" src="assets/pr-full-color-on-white.jpeg#gh-light-mode-only">
+</a>
+</div>
